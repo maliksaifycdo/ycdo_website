@@ -1,0 +1,27 @@
+﻿export const ROUTES = {
+  HOME:        '/',
+  ABOUT:       '/about',
+  PROJECTS:    '/projects',
+  HEALTHCARE:  '/healthcare',
+  EDUCATION:   '/education',
+  COMMUNITY:   '/community',
+  GALLERY:     '/gallery',
+  NEWS:        '/news',
+  DONATE:      '/donate',
+  CONTACT:     '/contact',
+  LOGIN:       '/login',
+  ADMIN: {
+    ROOT:         '/admin',
+    PROJECTS:     '/admin/projects',
+    HOSPITALS:    '/admin/hospitals',
+    NEWS:         '/admin/news',
+    EVENTS:       '/admin/events',
+    GALLERY:      '/admin/gallery',
+    DONATIONS:    '/admin/donations',
+    VOLUNTEERS:   '/admin/volunteers',
+    APPOINTMENTS: '/admin/appointments',
+    CONTACTS:     '/admin/contacts',
+    SETTINGS:     '/admin/settings',
+  },
+} as const;
+

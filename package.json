@@ -1,0 +1,19 @@
+{
+  "name": "ycdo-website",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev --workspace=apps/frontend",
+    "dev:backend": "npm run start:dev --workspace=apps/backend",
+    "dev": "concurrently npm:dev:frontend npm:dev:backend",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint -w apps/frontend && npm run lint -w apps/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
