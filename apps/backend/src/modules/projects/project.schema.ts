@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { ProjectCategory } from '@ycdo/shared';
+import { ProjectCategory } from '../../shared';
 import { HydratedDocument } from 'mongoose';
 
 export type ProjectDocument = HydratedDocument<Project>;
@@ -32,3 +32,5 @@ export class Project {
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
+ProjectSchema.index({ category: 1 });
+ProjectSchema.index({ isActive: 1, order: 1 });

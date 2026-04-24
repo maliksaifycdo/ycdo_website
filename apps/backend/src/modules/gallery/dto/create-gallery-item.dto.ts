@@ -1,5 +1,5 @@
 import { IsDateString, IsEnum, IsOptional, IsString } from 'class-validator';
-import { GalleryCategory, GalleryItemType, ICreateGalleryItemDto } from '@ycdo/shared';
+import { GalleryCategory, GalleryItemType, ICreateGalleryItemDto } from '../../../shared';
 
 export class CreateGalleryItemDto implements ICreateGalleryItemDto {
   @IsString()

@@ -6,7 +6,7 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { ICreateHospitalDto, IHospitalCoordinates } from '@ycdo/shared';
+import { ICreateHospitalDto, IHospitalCoordinates } from '../../../shared';
 
 class HospitalCoordinatesDto implements IHospitalCoordinates {
   @IsNumber()

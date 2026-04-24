@@ -1,5 +1,5 @@
 import { IsDateString, IsEnum, IsString } from 'class-validator';
-import { AppointmentStatus, ICreateAppointmentDto } from '@ycdo/shared';
+import { AppointmentStatus, ICreateAppointmentDto } from '../../../shared';
 
 export class CreateAppointmentDto implements ICreateAppointmentDto {
   @IsString()

@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { VolunteerStatus } from '@ycdo/shared';
+import { VolunteerStatus } from '../../shared';
 import { HydratedDocument } from 'mongoose';
 
 export type VolunteerDocument = HydratedDocument<Volunteer>;

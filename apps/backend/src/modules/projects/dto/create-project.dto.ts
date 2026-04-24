@@ -1,5 +1,5 @@
 import { IsEnum, IsOptional, IsString, IsNumber } from 'class-validator';
-import { ICreateProjectDto, ProjectCategory } from '@ycdo/shared';
+import { ICreateProjectDto, ProjectCategory } from '../../../shared';
 
 export class CreateProjectDto implements ICreateProjectDto {
   @IsString()

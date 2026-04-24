@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsString, MinLength } from 'class-validator';
-import { UserRole } from '@ycdo/shared';
+import { UserRole } from '../../../shared';
 
 export class CreateUserDto {
   @IsString()

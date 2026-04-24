@@ -2,7 +2,7 @@ import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcryptjs';
-import { UserRole } from '@ycdo/shared';
+import { UserRole } from '../../shared';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User, UserDocument } from './user.schema';
 

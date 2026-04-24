@@ -1,5 +1,5 @@
 import { IsString } from 'class-validator';
-import { IUpdateSettingDto } from '@ycdo/shared';
+import { IUpdateSettingDto } from '../../../shared';
 
 export class UpdateSettingDto implements IUpdateSettingDto {
   @IsString()

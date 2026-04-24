@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { DonationCampaign, DonationStatus, PaymentMethod } from '@ycdo/shared';
+import { DonationCampaign, DonationStatus, PaymentMethod } from '../../shared';
 import { HydratedDocument } from 'mongoose';
 
 export type DonationDocument = HydratedDocument<Donation>;

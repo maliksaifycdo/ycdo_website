@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { VolunteerStatus } from '@ycdo/shared';
+import { VolunteerStatus } from '../../shared';
 import { CreateVolunteerDto } from './dto/create-volunteer.dto';
 import { Volunteer, VolunteerDocument } from './volunteer.schema';
 
@@ -23,5 +23,11 @@ export class VolunteersService {
     const volunteer = await this.volunteerModel.findByIdAndUpdate(id, { status }, { new: true });
     if (!volunteer) throw new NotFoundException('Volunteer not found');
     return volunteer;
+  }
+
+  async remove(id: string) {
+    const volunteer = await this.volunteerModel.findByIdAndDelete(id);
+    if (!volunteer) throw new NotFoundException('Volunteer not found');
+    return { ok: true };
   }
 }

@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { GalleryCategory } from '@ycdo/shared';
+import { GalleryCategory } from '../../shared';
 import { HydratedDocument } from 'mongoose';
 
 export type GalleryItemDocument = HydratedDocument<GalleryItem>;
@@ -26,3 +26,4 @@ export class GalleryItem {
 }
 
 export const GalleryItemSchema = SchemaFactory.createForClass(GalleryItem);
+GalleryItemSchema.index({ category: 1 });

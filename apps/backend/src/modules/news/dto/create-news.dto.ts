@@ -1,5 +1,5 @@
 import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
-import { ICreateNewsDto } from '@ycdo/shared';
+import { ICreateNewsDto } from '../../../shared';
 
 export class CreateNewsDto implements ICreateNewsDto {
   @IsString()

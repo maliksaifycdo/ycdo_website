@@ -1,5 +1,5 @@
 import { IsEmail, IsString, MinLength } from 'class-validator';
-import { ILoginDto } from '@ycdo/shared';
+import { ILoginDto } from '../../../shared';
 
 export class LoginDto implements ILoginDto {
   @IsEmail()

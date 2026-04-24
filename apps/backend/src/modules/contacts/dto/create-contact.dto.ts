@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsOptional, IsString } from 'class-validator';
-import { ContactSubject, ICreateContactDto } from '@ycdo/shared';
+import { ContactSubject, ICreateContactDto } from '../../../shared';
 
 export class CreateContactDto implements ICreateContactDto {
   @IsString()

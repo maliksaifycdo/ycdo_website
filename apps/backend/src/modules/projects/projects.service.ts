@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, OnModuleInit } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { ProjectCategory } from '@ycdo/shared';
+import { ProjectCategory } from '../../shared';
 import { CreateProjectDto, UpdateProjectDto } from './dto/create-project.dto';
 import { Project, ProjectDocument } from './project.schema';
 

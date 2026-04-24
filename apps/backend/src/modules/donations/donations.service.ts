@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { DonationStatus } from '@ycdo/shared';
+import { DonationStatus } from '../../shared';
 import { CreateDonationDto } from './dto/create-donation.dto';
 import { Donation, DonationDocument } from './donation.schema';
 

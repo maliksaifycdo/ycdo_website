@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { AppointmentStatus } from '@ycdo/shared';
+import { AppointmentStatus } from '../../shared';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { Appointment, AppointmentDocument } from './appointment.schema';
 

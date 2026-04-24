@@ -1,5 +1,5 @@
 import { IsBoolean, IsEmail, IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
-import { DonationCampaign, DonationStatus, ICreateDonationDto, PaymentMethod } from '@ycdo/shared';
+import { DonationCampaign, DonationStatus, ICreateDonationDto, PaymentMethod } from '../../../shared';
 
 export class CreateDonationDto implements ICreateDonationDto {
   @IsString()

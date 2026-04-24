@@ -3,7 +3,7 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Roles } from '../auth/roles.decorator';
 import { RolesGuard } from '../auth/roles.guard';
-import { UserRole } from '@ycdo/shared';
+import { UserRole } from '../../shared';
 import { CreateDonationDto, UpdateDonationStatusDto } from './dto/create-donation.dto';
 import { DonationsService } from './donations.service';
 

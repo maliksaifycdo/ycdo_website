@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { ContactSubject } from '@ycdo/shared';
+import { ContactSubject } from '../../shared';
 import { HydratedDocument } from 'mongoose';
 
 export type ContactDocument = HydratedDocument<Contact>;

@@ -1,5 +1,5 @@
-import { IsDateString, IsOptional, IsString } from 'class-validator';
-import { ICreateEventDto } from '@ycdo/shared';
+import { IsBoolean, IsDateString, IsOptional, IsString } from 'class-validator';
+import { ICreateEventDto } from '../../../shared';
 
 export class CreateEventDto implements ICreateEventDto {
   @IsString()
@@ -21,6 +21,10 @@ export class CreateEventDto implements ICreateEventDto {
   @IsOptional()
   @IsString()
   registrationLink?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }
 
 export class UpdateEventDto {
@@ -47,4 +51,8 @@ export class UpdateEventDto {
   @IsOptional()
   @IsString()
   registrationLink?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
 }

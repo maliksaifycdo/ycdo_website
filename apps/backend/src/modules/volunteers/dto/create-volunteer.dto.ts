@@ -1,5 +1,5 @@
 import { IsArray, IsEmail, IsEnum, IsString } from 'class-validator';
-import { ICreateVolunteerDto, VolunteerStatus } from '@ycdo/shared';
+import { ICreateVolunteerDto, VolunteerStatus } from '../../../shared';
 
 export class CreateVolunteerDto implements ICreateVolunteerDto {
   @IsString()
