@@ -1,8 +1,22 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: false },
+
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@ycdo/shared': path.resolve(__dirname, 'types/shared/index.ts'),
+    };
+    return config;
+  },
+
   experimental: {
     optimizePackageImports: [
       'lucide-react',
@@ -50,4 +64,5 @@ const nextConfig = {
     ];
   },
 };
+
 export default nextConfig;

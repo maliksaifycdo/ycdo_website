@@ -30,5 +30,5 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://your-backend.onrender.com/api/:splat"
+  to = "https://ycdo-backend.onrender.com/api/:splat"
   status = 200
