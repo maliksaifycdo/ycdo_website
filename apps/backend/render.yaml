@@ -4,7 +4,7 @@ services:
     runtime: node
     rootDir: apps/backend
     buildCommand: npm install && npm run build
-    startCommand: npm run start:prod
+    startCommand: node dist/main
     plan: free
     envVars:
       - key: PORT

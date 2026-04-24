@@ -6,6 +6,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.use(compression());
 
   app.enableCors({
@@ -19,6 +20,8 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
+  app.setGlobalPrefix('api');
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -27,19 +30,25 @@ async function bootstrap() {
     }),
   );
 
-  app.setGlobalPrefix('api');
-
   const config = new DocumentBuilder()
     .setTitle('YCDO API')
-    .setDescription('YCDO Website Backend API')
+    .setDescription('YCDO Backend API')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  const port = parseInt(process.env.PORT || '10000', 10) || 10000;
+  const port = process.env.PORT || 10000;
+
   await app.listen(port, '0.0.0.0');
-  console.log(`Backend running on port ${port}`);
+
+  console.log(`
+  ✅ YCDO Backend Running!
+  🚀 Port: ${port}
+  🌍 Environment: ${process.env.NODE_ENV}
+  📚 Swagger: http://localhost:${port}/api/docs
+  `);
 }
+
 bootstrap();
