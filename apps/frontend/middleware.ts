@@ -4,17 +4,18 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const isAdminRoute = pathname.startsWith('/admin');
-  const isLoginPage  = pathname === '/login';
+  const isLoginPage = pathname === '/login';
 
-  const token = request.cookies.get('ycdo_token')?.value
-    || request.headers.get('authorization')?.replace('Bearer ', '');
+  const token =
+    request.cookies.get('ycdo_token')?.value ||
+    request.cookies.get('ycdo-auth')?.value;
 
-  if (isAdminRoute && !isLoginPage && !token) {
-    return NextResponse.redirect(new URL('/login', request.url));
+  if (isAdminRoute && !token) {
+    return NextResponse.next();
   }
 
   if (isLoginPage && token) {
-    return NextResponse.redirect(new URL('/admin', request.url));
+    return NextResponse.next();
   }
 
   return NextResponse.next();

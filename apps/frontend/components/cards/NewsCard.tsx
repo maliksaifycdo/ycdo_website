@@ -12,7 +12,15 @@ export default function NewsCard({ news }: NewsCardProps) {
     <article className="overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="relative h-48 w-full">
         {news.thumbnail ? (
-          <Image src={news.thumbnail} alt={news.title} fill className="object-cover" />
+          <Image
+            src={news.thumbnail}
+            alt={news.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={80}
+            loading="lazy"
+            className="object-cover"
+          />
         ) : (
           <div className="h-full w-full bg-gradient-to-br from-secondary to-primary" />
         )}

@@ -5,6 +5,13 @@ export const useNews = (page = 1, limit = 6) =>
   useQuery({
     queryKey: ['news', page, limit],
     queryFn: () => newsService.getAll(page, limit),
+    staleTime: 1000 * 60 * 5,
+  });
+
+export const useNewsManage = (page = 1, limit = 50) =>
+  useQuery({
+    queryKey: ['news', 'manage', page, limit],
+    queryFn: () => newsService.getManage(page, limit),
   });
 
 export const useNewsArticle = (slug: string) =>
@@ -18,7 +25,9 @@ export const useCreateNews = () => {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: newsService.create,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['news'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['news'] });
+    },
   });
 };
 
@@ -26,7 +35,9 @@ export const useUpdateNews = () => {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: ({ id, dto }: { id: string; dto: any }) => newsService.update(id, dto),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['news'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['news'] });
+    },
   });
 };
 
@@ -34,7 +45,9 @@ export const useDeleteNews = () => {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: newsService.remove,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['news'] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['news'] });
+    },
   });
 };
 

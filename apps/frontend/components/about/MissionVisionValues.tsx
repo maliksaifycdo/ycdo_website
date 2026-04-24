@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { Eye, Heart, Target } from 'lucide-react';
 import { cardHover, staggerContainer, staggerItem } from '@/utils/motion';
 

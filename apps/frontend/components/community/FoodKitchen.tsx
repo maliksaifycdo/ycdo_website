@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { slideInLeft, slideInRight } from '@/utils/motion';
 
 interface KitchenStep {
@@ -47,6 +47,9 @@ export default function FoodKitchen() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdeJezp2M2a697rlpeOuoFg5eeMV1DjFC0Rp545Bm1nPO0b2BH7ixVvnJmh2UWzwhzSPnYXDowspBsiEy4aK2JsDpzuoLamvB9ez2CyZVzsSa3vOHKy8yaMpWO2PRphR4w33ylNU9T6p_5YtwwvFsbxfZ69B3kCEFtdBZcp9q72CvI6iBIym3GA50QEpsDo4CqHWZfeFvc2HeyOiRMsiyifuSzwT0N0a5R_u7eBvcFdrn6ybzIx3GIBe7ziEQLndjSz4og6XXrQVTR"
                 alt="dedicated volunteers preparing large pots of steaming stew in a clean community kitchen"
                 fill
+                sizes="100vw"
+                quality={85}
+                loading="lazy"
                 className="object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1A3A8F] to-transparent p-12">

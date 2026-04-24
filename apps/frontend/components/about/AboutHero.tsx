@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ROUTES } from '@/constants/routes';
 import { fadeIn, fadeUp } from '@/utils/motion';
 
@@ -15,13 +15,16 @@ export default function AboutHero() {
           src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070"
           alt="dramatic wide shot of sunset over a community medical center with silhouettes of trees and a clear horizon"
           fill
+          sizes="100vw"
+          quality={90}
           className="object-cover object-center"
+          priority
         />
       </div>
 
       <div className="container relative z-10 mx-auto px-12">
         <motion.nav
-          variants={fadeIn}
+          variants={fadeIn as any}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.1 }}
@@ -35,7 +38,7 @@ export default function AboutHero() {
         </motion.nav>
 
         <motion.h1
-          variants={fadeUp}
+          variants={fadeUp as any}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.2 }}
@@ -45,7 +48,7 @@ export default function AboutHero() {
         </motion.h1>
 
         <motion.p
-          variants={fadeUp}
+          variants={fadeUp as any}
           initial="hidden"
           animate="visible"
           transition={{ delay: 0.3 }}

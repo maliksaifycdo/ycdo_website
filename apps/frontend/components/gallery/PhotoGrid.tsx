@@ -1,9 +1,14 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
+
+const Lightbox = dynamic(() => import('yet-another-react-lightbox'), {
+  ssr: false,
+  loading: () => null,
+});
 import { ZoomIn } from 'lucide-react';
 import { staggerContainer, staggerItem } from '@/utils/motion';
 import type { GalleryFilterType } from './GalleryFilter';
@@ -50,8 +55,16 @@ export default function PhotoGrid({ activeFilter, lightboxIndex, setLightboxInde
         onClick={() => setLightboxIndex(idx)}
         className="group relative w-full overflow-hidden rounded-xl bg-slate-100 shadow-sm text-left"
       >
-        <div className={`relative w-full ${photo.tall ? 'h-[500px]' : 'h-80'}`}>
-          <Image src={photo.src} alt={photo.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+        <div className={`relative w-full ${photo.tall ? 'h-[320px] sm:h-[400px] md:h-[500px]' : 'h-56 sm:h-64 md:h-80'}`}>
+          <Image
+            src={photo.src}
+            alt={photo.title}
+            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 33vw"
+            quality={85}
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+          />
         </div>
         <div className="absolute inset-0 flex flex-col justify-end bg-[#1A3A8F]/80 p-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <ZoomIn className="mb-4 h-8 w-8 text-white" />
@@ -64,7 +77,7 @@ export default function PhotoGrid({ activeFilter, lightboxIndex, setLightboxInde
 
   return (
     <section className="mx-auto max-w-7xl px-8 py-16">
-      <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-8">{col1.map(renderCard)}</div>
         <div className="space-y-8 lg:mt-12">{col2.map(renderCard)}</div>
         <div className="space-y-8">{col3.map(renderCard)}</div>

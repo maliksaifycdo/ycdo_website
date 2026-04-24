@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { staggerContainer, staggerItem } from '@/utils/motion';
 
 export default function EducationHero() {
@@ -12,6 +12,8 @@ export default function EducationHero() {
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSuSpclvB6IbF8qehlROElBBAVP42l1aohnIDceiusKiIk05mBNjbHXzUkAH6WGDLMYiL4ciWak3BP4j0MrfNz77INtDmVFV1mTd33cVf4D2ICd77mwSDPrER77DBxp6ALCujyDjZs02a5mUjjzqOqq57wur8Bt5FWo_mT7D7IgYU5lLZYFRblyfpEWwW5AeAwHz7oNpMr-FduLTHygK-nBxdlWErwY9H0sAqNzkbsjApNK15PmIvl18Hl6Up3bTgq_iuP7rqIie9B"
           alt="wide shot of a sunlit classroom in a rural village with children smiling and holding books"
           fill
+          sizes="100vw"
+          quality={90}
           className="object-cover"
           priority
         />

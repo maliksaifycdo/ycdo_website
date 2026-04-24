@@ -55,7 +55,7 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
       },
       boxShadow: {
         'card': '0 4px 24px rgba(0,0,0,0.08)',

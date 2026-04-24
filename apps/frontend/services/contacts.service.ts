@@ -16,7 +16,11 @@ export const contactsService = {
   },
   getUnreadCount: async (): Promise<number> => {
     const res = await api.get('/contacts/unread-count');
-    return res.data;
+    const body = res.data as { count?: number } | number;
+    return typeof body === 'number' ? body : (body?.count ?? 0);
+  },
+  remove: async (id: string): Promise<void> => {
+    await api.delete(`/contacts/${id}`);
   },
 };
 

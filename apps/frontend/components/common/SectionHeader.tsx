@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { cn } from '@/utils/helpers';
 
 interface SectionHeaderProps {

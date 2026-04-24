@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { fadeUp, staggerContainer, staggerItem } from '@/utils/motion';
 
 export default function ProjectsHero() {
@@ -12,6 +12,8 @@ export default function ProjectsHero() {
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPEguyQNtuZWkwYciq0nBO_Xls7cge04TSaCtLIlJboKS6xOdcSfwrBUmpMS_7Sx09k7hBuSwaEiRvBf0k0xBfcr324_4VbIdMgS5Bpwn3d3lipNkastnHY_u6IiQwhtEfAkONnIdEFGcSj9V1xgJ7Vt3wLCRnbrltLuDC8tg4yXYq1PhHJVoRfUTrefnxFHYdzkMZjxgAA7bTk08Wx1MtZ3K3k2-HE9943w39DoRHlrU3TMz6jBj5QOPnStZf7gKIa3srzo5DQJR8"
           alt="close up of children hands reaching out in sunlight against a soft blurred background, cinematic lighting and high-end humanitarian aesthetic"
           fill
+          sizes="100vw"
+          quality={90}
           className="object-cover mix-blend-overlay"
           priority
         />

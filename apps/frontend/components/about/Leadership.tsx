@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { Link2, Mail, Share2 } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import { scaleIn, slideInLeft, slideInRight } from '@/utils/motion';
@@ -24,8 +24,11 @@ export default function Leadership() {
                 <div className="relative h-full w-full">
                   <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmlHsM2GYtYffmNZQNwWQXku40jLS7-Gtpyb7jeX-nPRKgGEyMDIueSR4zmgdsOKDShigwwOTN2LAQPooULeKB1LjvnAXQQfWlcXbB6IST5bJz_tyoTW9LvUrsC3XmHOlm8eyuCv3to-DyETf9MWdCR333siPUB2zhBX_tL_3Z3yNen2Jn9sqUfoXvOu24N20n91UUZ1THb8MX34_ewmDQwHAfl9_knM5QGnAGsMGfOFZ6VbK9691TK91-yr8xJKXTDhOsrE3H4xUD"
-                    alt="professional male CEO in formal business attire looking confidently into the camera with a bright modern office background"
+                    alt="professional male Founder in formal business attire looking confidently into the camera with a bright modern office background"
                     fill
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                    quality={85}
+                    loading="lazy"
                     className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
                   />
                 </div>
@@ -51,7 +54,7 @@ export default function Leadership() {
             >
               <span className="mb-4 block text-sm font-bold uppercase tracking-widest text-[#1A3A8F]">Executive Leadership</span>
               <h2 className="mb-2 text-5xl font-black text-[#1A3A8F]">Zaheer Babar Rana</h2>
-              <p className="mb-8 text-xl font-bold text-[#C0272D]">Chief Executive Officer</p>
+              <p className="mb-8 text-xl font-bold text-[#C0272D]">Founder</p>
 
               <div className="mb-8 space-y-4 text-lg leading-relaxed text-slate-600">
                 <p>

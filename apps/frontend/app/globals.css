@@ -71,4 +71,8 @@
     hover:bg-gray-100 transition-all duration-200 
     active:scale-95 inline-flex items-center gap-2;
   }
+
+  .animated-element {
+    will-change: transform, opacity;
+  }
 }

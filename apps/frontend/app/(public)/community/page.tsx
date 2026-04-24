@@ -6,7 +6,7 @@ import FoodKitchen from '@/components/community/FoodKitchen';
 import HowToAccess from '@/components/community/HowToAccess';
 
 export const metadata: Metadata = {
-  title: 'Community Services | YCDO – Serve Humanity',
+  title: 'Community Services',
   description: 'YCDO provides food, Ramadan packages, wheelchairs, orphan care and 9 community services across Pakistan.',
 };
 

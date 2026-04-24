@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from '@/components/common/MotionDiv';
 import { Menu, Globe, Share2, Users, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -30,7 +30,7 @@ export default function Navbar() {
         isScrolled ? 'shadow-xl shadow-[#0b1c30]/20' : ''
       }`}
     >
-      <div className="mx-auto flex max-w-full items-center justify-between px-8 py-4">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8 lg:px-12">
         <Link href={ROUTES.HOME} className="text-2xl font-black tracking-tighter text-white">
           YCDO
         </Link>

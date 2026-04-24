@@ -44,7 +44,15 @@ export default function VideoSection() {
           {videos.map((video) => (
             <article key={video.title} className="group">
               <div className="relative mb-6 aspect-video overflow-hidden rounded-2xl shadow-2xl">
-                <Image src={video.thumbnail} alt={video.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                <Image
+                  src={video.thumbnail}
+                  alt={video.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={75}
+                  loading="lazy"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 flex items-center justify-center bg-slate-900/20 transition-colors group-hover:bg-slate-900/40">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#C0272D] text-white shadow-lg transition-transform group-hover:scale-110">
                     <Play className="h-8 w-8 fill-current" />

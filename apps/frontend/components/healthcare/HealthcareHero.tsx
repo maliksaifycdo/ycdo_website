@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import toast from 'react-hot-toast';
 import { fadeUp, slideInRight, staggerContainer } from '@/utils/motion';
 
@@ -17,6 +17,8 @@ export default function HealthcareHero() {
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrB-lFHHgOmsXXZVTSm7IDVIYaz5LU-sa-tiBVRPjpGmWs5q6b04yAqa2qpCSMvQ6latsdWaw4Ze3SqtP-TfalqiKbWKNXgKq_0iguofJGjjpTcGxDh_EytIWBZUQTod9LD_FeYKI9iLe-hPXDYu_yk_kTGcKBcQzUuHosd-dkFTWRhBIeyGmui_pbnXIeI5lzvsuVopxP9FKhoYeENZAShsbkLdxtnd2M8hWYjb1bw-rHjeW3m0kRV83JYl825j1UzuqQZ832eNfS"
         alt="modern clean hospital exterior at dusk with glowing windows and professional medical staff walking in the distance"
         fill
+        sizes="100vw"
+        quality={85}
         className="object-cover"
         priority
       />

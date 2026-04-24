@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { fadeUp } from '@/utils/motion';
 
 export default function CommunityHero() {
@@ -12,6 +12,8 @@ export default function CommunityHero() {
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxQm8qNCLraF6uhxSCODO54QZSGrBxTL9r_lxIa72zDWk_u2pDH420wgrlDoDVqPIG1-Ywl2xDm4gi7tWlMVF0gTuIomO55Q0ud-VkcFD9lpCzWhTYPXYmk-9na-SxnOdNNSPX3YoW34Yh6aAWOEc5cgNAsQGxQ5Xj6YT7c5MrkQV9pZBlhNS5DiRHdUceVpkwBf9oBRwVAIYVsdeg_xvHSMGLWgz5nSyjWXHcAopnE4na7Q3KvoIKPKWKI0v_8Dc1Nfs1QLPeSkHr"
           alt="diverse group of community members standing together in a sunlit outdoor urban environment"
           fill
+          sizes="100vw"
+          quality={90}
           className="object-cover opacity-30 mix-blend-overlay"
           priority
         />

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { Bus, Flag, Hospital, Rocket } from 'lucide-react';
 import { fadeUp, scaleIn, slideInLeft, slideInRight } from '@/utils/motion';
 

@@ -6,6 +6,10 @@ export const newsService = {
     const res = await api.get('/news', { params: { page, limit } });
     return res.data;
   },
+  getManage: async (page = 1, limit = 50): Promise<IPaginatedResponse<INews>> => {
+    const res = await api.get('/news/manage', { params: { page, limit } });
+    return res.data;
+  },
   getOne: async (slug: string): Promise<INews> => {
     const res = await api.get(`/news/${slug}`);
     return res.data;

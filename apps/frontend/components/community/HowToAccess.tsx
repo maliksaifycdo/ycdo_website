@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ClipboardCheck, ClipboardList, Heart, Phone, PhoneCall } from 'lucide-react';
 import { staggerContainer, staggerItem } from '@/utils/motion';
 

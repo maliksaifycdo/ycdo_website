@@ -14,5 +14,8 @@ export const volunteersService = {
     const res = await api.patch(`/volunteers/${id}/status`, { status });
     return res.data;
   },
+  remove: async (id: string): Promise<void> => {
+    await api.delete(`/volunteers/${id}`);
+  },
 };
 

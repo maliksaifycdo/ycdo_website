@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ChevronDown } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import { cardHover, staggerContainer, staggerItem } from '@/utils/motion';
@@ -55,7 +55,7 @@ export default function ProjectsGrid({ activeFilter, onProjectClick }: ProjectsG
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-50px' }}
         className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
       >
         {filtered.map((project) => (
@@ -73,6 +73,9 @@ export default function ProjectsGrid({ activeFilter, onProjectClick }: ProjectsG
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
+                  loading="lazy"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className={`absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white ${project.badgeColor}`}>

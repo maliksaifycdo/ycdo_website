@@ -6,7 +6,7 @@ import HospitalList from '@/components/healthcare/HospitalList';
 import BookingForm from '@/components/healthcare/BookingForm';
 
 export const metadata: Metadata = {
-  title: 'Healthcare Network | YCDO – Serve Humanity',
+  title: 'Healthcare Network',
   description:
     'YCDO operates 16+ hospitals across Multan providing free and affordable healthcare. Book a free consultation today.',
 };

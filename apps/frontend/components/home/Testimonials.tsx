@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { Star } from 'lucide-react';
 import { staggerContainer, staggerItem } from '@/utils/motion';
 
@@ -45,7 +45,7 @@ export default function Testimonials() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="grid gap-8 md:grid-cols-3"
         >
           {testimonials.map((item) => (
@@ -58,7 +58,7 @@ export default function Testimonials() {
               <blockquote className="mb-8 text-lg italic text-slate-600">"{item.quote}"</blockquote>
               <div className="flex items-center gap-4">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full">
-                  <Image src={item.image} alt={item.name} fill className="object-cover" />
+                  <Image src={item.image} alt={item.name} fill sizes="48px" quality={85} loading="lazy" className="object-cover" />
                 </div>
                 <div>
                   <p className="font-bold text-[#1A3A8F]">{item.name}</p>

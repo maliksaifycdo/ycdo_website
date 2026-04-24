@@ -5,6 +5,7 @@ export const useProjects = (category?: any) =>
   useQuery({
     queryKey: ['projects', category],
     queryFn: () => projectsService.getAll(category),
+    staleTime: 1000 * 60 * 15,
   });
 
 export const useProject = (id: string) =>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ROUTES } from '@/constants/routes';
 import { scaleIn } from '@/utils/motion';
 
@@ -22,6 +22,9 @@ export default function ProjectsCTA() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjmljoRyr2pVlu3Zko2G8BgrOMDtjMAnaHTfHgtqn0uhEomtdwzLIYRzLehsnG5Pj63CbI4-5NgFXHKm0xyyW6oehXY_v7w5LAazBVC1A_N3wNXv7F9PDSpaYOMa0-bFmXHNk7tbVNtCNCiueOWSP2aTiTMLVvuZc2sQ5xTZ2cqcLRPNoGT4w4RQbmQcfU5-wqdQLv8chQEeGwWDpPebn8H8VOyfHN_xKUpw8MB4SSRTqE-u0o_TGn1AvesUbX44BmMwXsiHvnyDi5"
               alt="abstract pattern of interconnected lines and dots representing community and network"
               fill
+              sizes="100vw"
+              quality={80}
+              loading="lazy"
               className="object-cover"
             />
           </div>

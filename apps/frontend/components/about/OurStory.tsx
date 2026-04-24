@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { scaleIn, slideInLeft, slideInRight } from '@/utils/motion';
 
 export default function OurStory() {
@@ -13,7 +13,7 @@ export default function OurStory() {
             variants={slideInLeft}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             className="md:col-span-7"
           >
             <span className="mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-[#C0272D]">The Genesis</span>
@@ -37,7 +37,7 @@ export default function OurStory() {
             variants={slideInRight}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             className="relative md:col-span-5"
           >
             <div className="absolute -left-8 -top-8 h-64 w-64 rounded-full bg-[#C0272D]/5 blur-3xl" />
@@ -47,6 +47,9 @@ export default function OurStory() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBahCDQvDzRn9AWWWqULM3sd3mxtRmaO2EmYd8R2HjeMyXvU3YaaO5jWrrBXNQreKc5Od28GmlEHBUl9ctQqYQkafQcGpoRa5KM2548cy5A1Isl4gtsleW0FgahwfxHn23YGYhK2izWq2vLOBegj0tM9WvA9RomE2lwZY-7bUq217rHLQRmeiBdtLYsp0sTdGKRkLNPlgfCc2L6inwH22lwEDG2LDk_mn823C8pTB0yo0Tkb7mrvt8WLsQxgboEno74S_3nflsT0H1o"
                   alt="dignified portrait of a visionary leader in traditional attire against a soft neutral background with warm professional lighting"
                   fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  quality={85}
+                  loading="lazy"
                   className="object-cover grayscale transition-all duration-700 hover:grayscale-0"
                 />
               </div>
@@ -56,7 +59,7 @@ export default function OurStory() {
               variants={scaleIn}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ delay: 0.4 }}
               className="absolute -bottom-6 -right-6 rounded-xl border-l-4 border-[#C0272D] bg-white p-6 shadow-xl"
             >

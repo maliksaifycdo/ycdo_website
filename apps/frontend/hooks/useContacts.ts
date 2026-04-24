@@ -32,3 +32,14 @@ export const useMarkContactAsRead = () => {
   });
 };
 
+export const useDeleteContact = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: contactsService.remove,
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['contacts'] });
+      qc.invalidateQueries({ queryKey: ['contacts', 'unread-count'] });
+    },
+  });
+};
+

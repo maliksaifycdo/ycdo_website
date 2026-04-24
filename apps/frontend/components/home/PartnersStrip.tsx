@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { fadeIn } from '@/utils/motion';
 
 const partnerLogos = [
@@ -18,7 +18,7 @@ export default function PartnersStrip() {
       variants={fadeIn}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: '-50px' }}
       className="px-8 pb-24"
     >
       <div className="mx-auto max-w-7xl border-t border-slate-300/40 pt-16">
@@ -28,7 +28,7 @@ export default function PartnersStrip() {
         <div className="flex flex-wrap items-center justify-center gap-16 grayscale opacity-50 transition-all hover:opacity-100">
           {partnerLogos.map((logo, idx) => (
             <div key={`${logo}-${idx}`} className="relative h-10 w-36">
-              <Image src={logo} alt={`Partner logo ${idx + 1}`} fill className="object-contain" />
+              <Image src={logo} alt={`Partner logo ${idx + 1}`} fill sizes="(max-width: 768px) 100vw, 180px" quality={85} loading="lazy" className="object-contain" />
             </div>
           ))}
         </div>

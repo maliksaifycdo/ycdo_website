@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { fadeIn, fadeUp } from '@/utils/motion';
 
 export default function GalleryHero() {
@@ -12,6 +12,8 @@ export default function GalleryHero() {
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDffp3IzePL1fk5SzPU6OG161cm2EjwZmPHgvs6S9oW-l62JTQEEZjEuXHPdSWGphPmYOPbhljrcPmukvmLBTmjJ2vAbk8RpegO66ymfWoiBcI9PG_MloR9pGRW-yPpaOM6CDrKeKyByKkIQLREPLnL7zd0VS55BHh7fRAgN6cO3cvyLjqc_SDpb2lYE_8_7FmT5x9HKhsO4_fSRRAj57HIrC71vlS5zU--kUTxjWXaUW2Xepd_uRNid6bxKqnAlgGmfbLdKbbEnnBS"
           alt="cinematic wide shot of diverse children smiling in a bright community center"
           fill
+          sizes="100vw"
+          quality={90}
           className="object-cover opacity-30"
           priority
         />

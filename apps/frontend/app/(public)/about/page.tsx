@@ -8,7 +8,7 @@ import LegalStatus from '@/components/about/LegalStatus';
 import Partners from '@/components/about/Partners';
 
 export const metadata: Metadata = {
-  title: 'About Us | YCDO – Serve Humanity',
+  title: 'About Us',
   description:
     "Learn about YCDO's 30+ year journey from a student's dream to 16+ hospitals serving communities across Pakistan.",
 };

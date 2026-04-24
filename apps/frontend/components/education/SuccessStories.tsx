@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { useState } from 'react';
 import { staggerContainer, staggerItem } from '@/utils/motion';
@@ -72,7 +72,7 @@ export default function SuccessStories() {
           {stories.map((story) => (
             <motion.article key={story.name} variants={staggerItem} className="group relative rounded-3xl bg-slate-100 p-8">
               <div className="absolute -top-10 left-8 h-20 w-20 overflow-hidden rounded-full border-4 border-white shadow-lg">
-                <Image src={story.image} alt={story.name} fill className="object-cover" />
+                <Image src={story.image} alt={story.name} fill sizes="80px" quality={85} loading="lazy" className="object-cover" />
               </div>
               <div className="pt-8">
                 <Quote className={`mb-4 h-10 w-10 ${story.quoteColor}`} />

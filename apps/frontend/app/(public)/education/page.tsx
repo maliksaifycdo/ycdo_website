@@ -7,7 +7,7 @@ import ScholarshipForm from '@/components/education/ScholarshipForm';
 import SuccessStories from '@/components/education/SuccessStories';
 
 export const metadata: Metadata = {
-  title: 'Education & Youth Empowerment | YCDO',
+  title: 'Education & Youth',
   description: 'YCDO empowers youth through scholarships, child protection, and vocational training across Pakistan.',
 };
 

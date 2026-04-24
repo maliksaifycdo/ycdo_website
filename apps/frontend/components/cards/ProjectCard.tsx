@@ -29,7 +29,15 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     >
       <div className="relative h-48 w-full">
         {imageUrl ? (
-          <Image src={imageUrl} alt={project.title} fill className="object-cover" />
+          <Image
+            src={imageUrl}
+            alt={project.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={80}
+            loading="lazy"
+            className="object-cover"
+          />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-secondary to-primary text-white">
             <FolderKanban className="h-12 w-12" />

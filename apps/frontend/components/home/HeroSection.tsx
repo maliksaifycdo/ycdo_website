@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
@@ -10,31 +10,36 @@ import { scaleIn, slideInRight, staggerContainer, staggerItem } from '@/utils/mo
 
 export default function HeroSection() {
   return (
-    <header className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <header className="relative flex min-h-screen items-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0">
         <Image
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz31CcbQEX6wQd-U0ioNMcR4Zx9Y5jy4wKGydA8WRu8I_11KSWxaGIgBv1K_4Jw7CSYotzMYr1VLtcPvDAvSu6oMbxSCrSE1nEsojpZuzhrOj4ETRxsAlXcpq2d02QeJEKTzz-Aq1SZSu0j60QLldZ8KMV7M2r5tMbZ6wttQBLzbyZ6yaZpLIxwxfWxtWA7Kpx65LLyRl5yKuAVGlCahvt6fDXqGVestAc_E5-5jcFhj3icOSe3_qlepU0zCSRDWk5xnJR804UwdRv"
           alt="Humanitarian aid worker in rural Pakistan providing healthcare support to local children in soft natural daylight"
           fill
+          sizes="100vw"
+          quality={85}
           className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(26,58,143,0.9)_0%,rgba(192,39,45,0.7)_100%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-8 md:grid-cols-2">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 px-4 md:grid-cols-2 md:gap-12 md:px-8 lg:px-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
           className="space-y-8"
         >
-          <motion.h1 variants={staggerItem} className="text-6xl font-black leading-[1.1] tracking-tight text-white md:text-7xl">
+          <motion.h1
+            variants={staggerItem}
+            className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          >
             Serving Humanity.
             <br />
             Empowering Youth.
           </motion.h1>
-          <motion.p variants={staggerItem} className="max-w-xl text-xl leading-relaxed text-white/90 md:text-2xl">
+          <motion.p variants={staggerItem} className="max-w-xl text-base leading-relaxed text-white/90 sm:text-lg md:text-xl lg:text-2xl">
             30+ years of compassionate healthcare, education & community service across Pakistan.
           </motion.p>
           <motion.div variants={staggerItem} className="flex flex-wrap gap-4 pt-4">
@@ -63,6 +68,9 @@ export default function HeroSection() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRE3tZiwhauBriQ2PrDPq88-P0gQ-IgjNwW_emGke447k1K0wMR8Pb5Lyo_skZ_EZzUCd9IrklSv9yayZ3TzzWrONkaLiCcQ6NV387vGqygmPIUiYqzIoq1aq4g7MvXh1aosp3lBiWwYzae_gEH2B9R45OrsM8bq4ZZ1cYJPH_rUXYeUWC69LRozYuyeeXjK0Eo7K9kgD5oc5wcjWr4qOqL0Q7Y2_qXLqMdGr6vcy92hUVrCqfNUqGFO9GzE3l2RDAr1wbEAgIl6JV"
                 alt="Professional doctor in white coat consulting with a senior patient in a clean modern hospital setting"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={85}
+                loading="lazy"
                 className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
               />
             </div>

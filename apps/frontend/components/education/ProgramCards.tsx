@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ArrowRight } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
 import { staggerContainer, staggerItem } from '@/utils/motion';
@@ -73,7 +73,15 @@ export default function ProgramCards() {
             >
               <div className="h-48 overflow-hidden">
                 <div className="relative h-full w-full">
-                  <Image src={program.image} alt={program.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <Image
+                    src={program.image}
+                    alt={program.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={80}
+                    loading="lazy"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
               </div>
               <div className={`p-8 ${program.borderColor}`}>

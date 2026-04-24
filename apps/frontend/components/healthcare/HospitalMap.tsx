@@ -1,34 +1,19 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Info, Search } from 'lucide-react';
-import { hospitals } from '@/components/healthcare/data';
-import 'leaflet/dist/leaflet.css';
-
-const MapContainer = dynamic(() => import('react-leaflet').then((m) => m.MapContainer), { ssr: false }) as any;
-const TileLayer = dynamic(() => import('react-leaflet').then((m) => m.TileLayer), { ssr: false }) as any;
-const Marker = dynamic(() => import('react-leaflet').then((m) => m.Marker), { ssr: false }) as any;
-const Popup = dynamic(() => import('react-leaflet').then((m) => m.Popup), { ssr: false }) as any;
+const HospitalLeafletMap = dynamic(() => import('./HospitalLeafletMap'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-[500px] w-full items-center justify-center rounded-3xl bg-gray-100 animate-pulse">
+      <p className="text-gray-400">Loading hospital map...</p>
+    </div>
+  ),
+});
 
 export default function HospitalMap() {
   const [search, setSearch] = useState('');
-
-  const filteredHospitals = useMemo(
-    () => hospitals.filter((h) => h.name.toLowerCase().includes(search.toLowerCase())),
-    [search]
-  );
-
-  const markerIcon = useMemo(() => {
-    if (typeof window === 'undefined') return null;
-    const L: typeof import('leaflet') = require('leaflet');
-    return L.divIcon({
-      className: 'custom-marker',
-      html: '<div style="width:18px;height:18px;background:#C0272D;border:3px solid white;border-radius:9999px;box-shadow:0 0 0 2px #C0272D;"></div>',
-      iconSize: [18, 18],
-      iconAnchor: [9, 9],
-    });
-  }, []);
 
   return (
     <section className="bg-slate-100 py-24">
@@ -65,26 +50,7 @@ export default function HospitalMap() {
           </div>
 
           <div className="relative h-[500px] w-full overflow-hidden rounded-3xl shadow-2xl lg:w-1/2">
-            <MapContainer center={[30.1575, 71.5249]} zoom={12} className="h-full w-full z-10">
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; OpenStreetMap contributors' />
-              {markerIcon &&
-                filteredHospitals.map((hospital) => (
-                  <Marker key={hospital.name} position={[hospital.lat, hospital.lng]} icon={markerIcon}>
-                    <Popup>
-                      <div className="space-y-2">
-                        <p className="font-bold text-[#1A3A8F]">{hospital.name}</p>
-                        <div className="flex flex-wrap gap-1">
-                          {hospital.services.map((service) => (
-                            <span key={service} className="rounded bg-slate-100 px-2 py-0.5 text-[10px] font-semibold">
-                              {service}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
-            </MapContainer>
+            <HospitalLeafletMap search={search} />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { fadeIn } from '@/utils/motion';
 
 const partners = ['WHO', 'UNICEF', 'RED CROSS', 'PPHI', 'BILL & MELINDA', 'UK AID'];

@@ -17,7 +17,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         {project ? (
           <>
             <div className="relative h-64 w-full">
-              <Image src={project.image} alt={project.title} fill className="object-cover" />
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                quality={85}
+                loading="lazy"
+                className="object-cover"
+              />
             </div>
             <div className="space-y-4 p-6">
               <span className={`inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white ${project.badgeColor}`}>

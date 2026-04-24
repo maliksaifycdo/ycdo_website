@@ -2,17 +2,17 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ArrowRight } from 'lucide-react';
 import { slideInLeft, slideInRight } from '@/utils/motion';
 
 const featured = {
-  slug: 'empowering-rural-education-sindh',
-  category: 'Community Impact',
-  date: 'May 24, 2024',
-  title: 'Empowering Rural Education: A New Chapter in Sindh',
+  slug: 'ycdo-launches-free-medical-camp',
+  category: 'Healthcare',
+  date: 'Latest',
+  title: 'YCDO Launches Free Medical Camp',
   excerpt:
-    'Through the collaborative efforts of local leaders and international donors, we have successfully launched five new vocational training centers designed to bridge the digital divide.',
+    'YCDO organized a free medical camp in Multan for underserved families — read the full story and impact on the ground.',
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDDHQYm8bPeflk3HPzygzQ_oUS6isL-DUJ4sHv8CRnfY6p3cKN35NRc9F63k2jZTZTGnDSj8xTRez-fsCV468WNQy6oSX22z2obMuviPTGGOCH8Y-RYtKaCRUYN0GrhuOIAT_wjIpHMY8j-QdH-tVPsroIIGwSEgY0wMdmzJO4WlmMA9RnaRAi23X7vlPZ9oMSw90I7lZ8vgeRisO_CbyHOmENa54EICIGjIlbMcIyjhe17cnmv3AjJ3zieI_8BqcdRBPEzDk_WJymU',
 };
@@ -26,16 +26,24 @@ export default function FeaturedArticle() {
             variants={slideInLeft}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             className="relative h-64 overflow-hidden md:h-full"
           >
-            <Image src={featured.image} alt="Featured news" fill className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <Image
+              src={featured.image}
+              alt={featured.title}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={85}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
           </motion.div>
           <motion.div
             variants={slideInRight}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             className="flex flex-col justify-center p-8 md:p-12"
           >
             <div className="mb-4 flex items-center space-x-4">

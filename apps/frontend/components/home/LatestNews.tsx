@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { ROUTES } from '@/constants/routes';
 import { staggerContainer, staggerItem } from '@/utils/motion';
 
@@ -51,7 +51,7 @@ export default function LatestNews() {
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-50px' }}
         className="mb-12 grid gap-8 md:grid-cols-3"
       >
         {news.map((item) => (
@@ -63,6 +63,9 @@ export default function LatestNews() {
                     src={item.image}
                     alt={item.title}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={85}
+                    loading="lazy"
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>

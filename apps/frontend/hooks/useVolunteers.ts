@@ -24,3 +24,11 @@ export const useUpdateVolunteerStatus = () => {
   });
 };
 
+export const useDeleteVolunteer = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: volunteersService.remove,
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['volunteers'] }),
+  });
+};
+

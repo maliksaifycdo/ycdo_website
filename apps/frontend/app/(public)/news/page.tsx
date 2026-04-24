@@ -5,7 +5,7 @@ import NewsSidebar from '@/components/news/NewsSidebar';
 import EventsSection from '@/components/news/EventsSection';
 
 export const metadata: Metadata = {
-  title: 'News & Events | YCDO – Serve Humanity',
+  title: 'News & Events',
   description:
     'Latest news, field updates, and upcoming events from YCDO humanitarian missions across Pakistan.',
 };

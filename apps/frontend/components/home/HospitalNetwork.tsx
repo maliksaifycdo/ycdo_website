@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion } from '@/components/common/MotionDiv';
 import { MapPin } from 'lucide-react';
 import { slideInLeft, staggerContainer, staggerItem } from '@/utils/motion';
 
@@ -58,6 +58,9 @@ export default function HospitalNetwork() {
             src="https://images.unsplash.com/photo-1526778545894-62d46c29bd11?q=80&w=2070&auto=format&fit=crop"
             alt="Satellite map view of Pakistan's geography showing diverse terrain from mountains to plains"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            quality={80}
+            loading="lazy"
             className="object-cover grayscale opacity-30"
           />
 

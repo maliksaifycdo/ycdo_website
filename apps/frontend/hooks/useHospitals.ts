@@ -5,6 +5,7 @@ export const useHospitals = (city?: string) =>
   useQuery({
     queryKey: ['hospitals', city],
     queryFn: () => hospitalsService.getAll(city),
+    staleTime: 1000 * 60 * 30,
   });
 
 export const useHospital = (id: string) =>

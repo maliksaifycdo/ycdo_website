@@ -19,10 +19,12 @@ export const useAuthStore = create<AuthState>()(
       isAuthenticated: false,
       login: (token, user) => {
         localStorage.setItem('ycdo_token', token);
+        document.cookie = `ycdo_token=${token}; path=/; max-age=604800; SameSite=Lax`;
         set({ token, user, isAuthenticated: true });
       },
       logout: () => {
         localStorage.removeItem('ycdo_token');
+        document.cookie = 'ycdo_token=; path=/; max-age=0';
         set({ token: null, user: null, isAuthenticated: false });
       },
     }),
