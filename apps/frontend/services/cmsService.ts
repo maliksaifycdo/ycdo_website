@@ -6,11 +6,21 @@ function getDefaultCmsUrl() {
   return 'http://localhost:10000/api';
 }
 
+function sanitizeCmsUrl(raw: string | undefined) {
+  if (!raw) return null;
+  const v = raw.trim();
+  // Guard against misconfigured env values like "NEXT_PUBLIC_CMS_URL"
+  if (v === 'NEXT_PUBLIC_CMS_URL' || v.startsWith('NEXT_PUBLIC_')) return null;
+  // Accept absolute or relative-to-host API base.
+  if (v.startsWith('http://') || v.startsWith('https://') || v.startsWith('/')) return v;
+  return null;
+}
+
 // Next.js: only NEXT_PUBLIC_* is guaranteed client-exposed.
 const CMS_URL =
-  process.env.NEXT_PUBLIC_CMS_URL ||
-  process.env.NEXT_PUBLIC_API_URL ||
-  process.env.CMS_URL ||
+  sanitizeCmsUrl(process.env.NEXT_PUBLIC_CMS_URL) ||
+  sanitizeCmsUrl(process.env.NEXT_PUBLIC_API_URL) ||
+  sanitizeCmsUrl(process.env.CMS_URL) ||
   getDefaultCmsUrl();
 
 // Optional compatibility: set NEXT_PUBLIC_CMS_KIND=strapi to use Strapi query format.

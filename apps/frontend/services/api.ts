@@ -1,9 +1,17 @@
 ﻿import axios from 'axios';
 
+function sanitizeApiUrl(raw: string | undefined) {
+  if (!raw) return null;
+  const v = raw.trim();
+  if (v === 'NEXT_PUBLIC_API_URL' || v.startsWith('NEXT_PUBLIC_')) return null;
+  if (v.startsWith('http://') || v.startsWith('https://') || v.startsWith('/')) return v;
+  return null;
+}
+
 function getApiBaseUrl() {
   // In production we rely on platform rewrites (/api -> Render backend)
   if (process.env.NODE_ENV === 'production') return '/api';
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:10000/api';
+  return sanitizeApiUrl(process.env.NEXT_PUBLIC_API_URL) || 'http://localhost:10000/api';
 }
 
 const api = axios.create({
