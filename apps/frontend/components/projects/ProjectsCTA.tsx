@@ -4,9 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
 import { ROUTES } from '@/constants/routes';
+import { useLocale } from '@/contexts/LocaleContext';
 import { scaleIn } from '@/utils/motion';
 
 export default function ProjectsCTA() {
+  const { t } = useLocale();
+
   return (
     <section className="bg-slate-100 py-24">
       <div className="mx-auto max-w-7xl px-8">
@@ -29,16 +32,16 @@ export default function ProjectsCTA() {
             />
           </div>
           <div className="relative z-10 mx-auto max-w-3xl px-12 py-16 text-center">
-            <h2 className="mb-6 text-3xl font-black text-white md:text-5xl">Be the catalyst for change.</h2>
+            <h2 className="mb-6 text-3xl font-black text-white md:text-5xl">{t('projects.cta.title')}</h2>
             <p className="mb-10 text-lg leading-relaxed text-[#dce1ff]">
-              Your support enables us to continue these vital programs. Every contribution directly impacts a life on the ground.
+              {t('projects.cta.subtitle')}
             </p>
             <div className="flex flex-col justify-center gap-4 md:flex-row">
               <Link href={ROUTES.DONATE} className="rounded-xl bg-[#C0272D] px-8 py-4 text-lg font-bold text-white transition-transform hover:scale-105">
-                Start a Fundraiser
+                {t('projects.cta.fundraiser')}
               </Link>
               <Link href={ROUTES.CONTACT} className="rounded-xl bg-white px-8 py-4 text-lg font-bold text-[#1A3A8F] transition-transform hover:scale-105">
-                Become a Volunteer
+                {t('projects.cta.volunteer')}
               </Link>
             </div>
           </div>

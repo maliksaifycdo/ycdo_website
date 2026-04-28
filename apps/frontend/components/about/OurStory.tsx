@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
+import { useLocale } from '@/contexts/LocaleContext';
 import { scaleIn, slideInLeft, slideInRight } from '@/utils/motion';
 
 export default function OurStory() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="bg-white py-24">
       <div className="container mx-auto px-12">
@@ -16,20 +19,14 @@ export default function OurStory() {
             viewport={{ once: true, margin: '-50px' }}
             className="md:col-span-7"
           >
-            <span className="mb-4 block text-sm font-bold uppercase tracking-[0.2em] text-[#C0272D]">The Genesis</span>
+            <span className={`mb-4 block text-sm font-bold tracking-[0.2em] text-[#C0272D] ${locale === 'en' ? 'uppercase' : ''}`}>{t('about.ourStory.kicker')}</span>
             <h2 className="mb-8 text-4xl font-extrabold leading-tight tracking-tight text-[#1A3A8F] md:text-5xl">
-              From a School Student&apos;s Dream to 16+ Hospitals
+              {t('about.ourStory.title')}
             </h2>
             <div className="space-y-6 text-lg leading-relaxed text-slate-600">
-              <p>
-                In 1991, amidst the vibrant but underserved streets of Qasimpur Colony, a visionary spark ignited. What began as a heartfelt initiative by a dedicated student evolved into a regional movement for health equity.
-              </p>
-              <p>
-                Young Citizens Development Organization (YCDO) was born out of the necessity to bridge the gap between quality medical care and those who needed it most. We did not just build buildings; we built trust, one patient at a time.
-              </p>
-              <p>
-                Today, our network spans over 16 specialized hospitals and mobile health units, ensuring that no one is left behind in the journey towards a healthier future.
-              </p>
+              <p>{t('about.ourStory.p1')}</p>
+              <p>{t('about.ourStory.p2')}</p>
+              <p>{t('about.ourStory.p3')}</p>
             </div>
           </motion.div>
 
@@ -63,8 +60,8 @@ export default function OurStory() {
               transition={{ delay: 0.4 }}
               className="absolute -bottom-6 -right-6 rounded-xl border-l-4 border-[#C0272D] bg-white p-6 shadow-xl"
             >
-              <p className="text-lg font-bold text-[#1A3A8F]">Established 1991</p>
-              <p className="text-sm text-slate-600">Qasimpur Colony Roots</p>
+              <p className="text-lg font-bold text-[#1A3A8F]">{t('about.ourStory.established')}</p>
+              <p className="text-sm text-slate-600">{t('about.ourStory.roots')}</p>
             </motion.div>
           </motion.div>
         </div>

@@ -52,7 +52,7 @@ export default function LoginPage() {
       </div>
 
       {/* RIGHT SIDE - 40% (full width on small screens) */}
-      <div className="flex w-full items-center justify-center bg-white p-8 lg:w-2/5">
+      <div className="flex w-full items-center justify-center bg-gradient-to-b from-[#0F2F75] to-[#001a4d] p-8 lg:w-2/5">
         <LoginForm />
       </div>
     </div>

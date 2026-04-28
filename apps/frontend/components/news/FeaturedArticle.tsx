@@ -4,20 +4,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from '@/components/common/MotionDiv';
 import { ArrowRight } from 'lucide-react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { slideInLeft, slideInRight } from '@/utils/motion';
 
 const featured = {
   slug: 'ycdo-launches-free-medical-camp',
-  category: 'Healthcare',
-  date: 'Latest',
-  title: 'YCDO Launches Free Medical Camp',
-  excerpt:
-    'YCDO organized a free medical camp in Multan for underserved families — read the full story and impact on the ground.',
   image:
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDDHQYm8bPeflk3HPzygzQ_oUS6isL-DUJ4sHv8CRnfY6p3cKN35NRc9F63k2jZTZTGnDSj8xTRez-fsCV468WNQy6oSX22z2obMuviPTGGOCH8Y-RYtKaCRUYN0GrhuOIAT_wjIpHMY8j-QdH-tVPsroIIGwSEgY0wMdmzJO4WlmMA9RnaRAi23X7vlPZ9oMSw90I7lZ8vgeRisO_CbyHOmENa54EICIGjIlbMcIyjhe17cnmv3AjJ3zieI_8BqcdRBPEzDk_WJymU',
 };
 
 export default function FeaturedArticle() {
+  const { t } = useLocale();
+  const title = t('news.featuredTitle');
+
   return (
     <section className="mb-16">
       <div className="group relative overflow-hidden rounded-xl bg-white shadow-2xl">
@@ -31,7 +30,7 @@ export default function FeaturedArticle() {
           >
             <Image
               src={featured.image}
-              alt={featured.title}
+              alt={title}
               fill
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -47,13 +46,13 @@ export default function FeaturedArticle() {
             className="flex flex-col justify-center p-8 md:p-12"
           >
             <div className="mb-4 flex items-center space-x-4">
-              <span className="rounded-full bg-[#1A3A8F] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#dce1ff]">{featured.category}</span>
-              <span className="text-sm font-medium text-slate-500">{featured.date}</span>
+              <span className="rounded-full bg-[#1A3A8F] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#dce1ff]">{t('news.featuredCategory')}</span>
+              <span className="text-sm font-medium text-slate-500">{t('news.featuredDate')}</span>
             </div>
-            <h1 className="mb-6 text-3xl font-black leading-tight text-slate-900 md:text-5xl">{featured.title}</h1>
-            <p className="mb-8 text-lg leading-relaxed text-slate-600">{featured.excerpt}</p>
+            <h1 className="mb-6 text-3xl font-black leading-tight text-slate-900 md:text-5xl">{title}</h1>
+            <p className="mb-8 text-lg leading-relaxed text-slate-600">{t('news.featuredExcerpt')}</p>
             <Link href={`/news/${featured.slug}`} className="flex w-fit items-center justify-center space-x-2 rounded-lg bg-[#1A3A8F] px-8 py-4 font-bold text-white transition-all hover:bg-[#0F1F5C]">
-              <span>Read Full Article</span>
+              <span>{t('news.readFullArticle')}</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
           </motion.div>
@@ -62,4 +61,3 @@ export default function FeaturedArticle() {
     </section>
   );
 }
-

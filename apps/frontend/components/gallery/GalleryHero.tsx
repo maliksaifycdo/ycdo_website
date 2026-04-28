@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeIn, fadeUp } from '@/utils/motion';
 
 export default function GalleryHero() {
+  const { t } = useLocale();
+
   return (
     <section className="relative flex h-[409px] min-h-[300px] items-center justify-center overflow-hidden bg-[#1A3A8F]">
       <div className="absolute inset-0 z-0">
@@ -21,13 +24,12 @@ export default function GalleryHero() {
       </div>
       <div className="relative z-10 text-center">
         <motion.h1 variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mb-4 text-6xl font-black tracking-tighter text-white md:text-8xl">
-          Gallery
+          {t('pages.gallery.title')}
         </motion.h1>
         <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mx-auto max-w-xl text-lg font-medium text-[#dce1ff] opacity-90">
-          Witness the stories of resilience and the direct impact of your support across our global missions.
+          {t('pages.gallery.subtitle')}
         </motion.p>
       </div>
     </section>
   );
 }
-

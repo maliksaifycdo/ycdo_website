@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from '@/components/common/MotionDiv';
 import { ArrowRight, MapPin, Phone } from 'lucide-react';
+import { useLocale } from '@/contexts/LocaleContext';
 
 const locations = [
   { name: 'Masoom Shah Road Clinic', address: 'Masoom Shah Road, Multan', phone: '03002022008' },
@@ -34,14 +35,16 @@ function formatPhone(p: string) {
 }
 
 export default function HospitalLocations() {
+  const { t } = useLocale();
+
   return (
     <section className="bg-[#f8f9ff] py-24">
       <div className="mx-auto max-w-7xl px-12">
         <div className="mb-16 flex items-end justify-between gap-8">
           <div>
-            <h2 className="mb-4 text-4xl font-black tracking-tight text-[#00236f]">Our Hospital Network</h2>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-[#00236f]">{t('hospitalLocations.title')}</h2>
             <p className="text-lg text-slate-600">
-              Specialized healthcare facilities serving local communities across the region.
+              {t('hospitalLocations.subtitle')}
             </p>
           </div>
           <div className="hidden md:block">
@@ -49,7 +52,7 @@ export default function HospitalLocations() {
               href="/healthcare"
               className="flex items-center gap-2 font-bold text-[#00236f] transition-transform hover:translate-x-2"
             >
-              View All Locations
+              {t('hospitalLocations.viewAll')}
               <ArrowRight className="h-5 w-5" aria-hidden />
             </Link>
           </div>

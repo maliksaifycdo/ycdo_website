@@ -118,7 +118,7 @@ export default function LoginForm() {
 
   return (
     <div className="w-full max-w-md">
-      <Card className="border-0 shadow-none">
+      <Card className="border border-white/10 bg-white/95 shadow-xl backdrop-blur-sm">
         <CardHeader className="pb-6 text-center">
           <CardTitle className="text-3xl font-black text-[#1A3A8F]">Welcome Back</CardTitle>
           <CardDescription className="text-gray-500">Sign in to your admin account</CardDescription>
@@ -128,18 +128,24 @@ export default function LoginForm() {
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-sm font-semibold text-gray-700">
+              <Label htmlFor="email" className="text-sm font-semibold text-slate-900">
                 Email Address
               </Label>
               <div className="relative">
                 <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <Input id="email" type="email" placeholder="admin@ycdo.org.pk" className="pl-10" {...register('email')} />
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="admin@ycdo.org.pk"
+                  className="bg-white pl-10 text-slate-900 placeholder:text-slate-400"
+                  {...register('email')}
+                />
               </div>
               {errors.email ? <p className="text-xs text-red-500">{errors.email.message}</p> : null}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-semibold text-gray-700">
+              <Label htmlFor="password" className="text-sm font-semibold text-slate-900">
                 Password
               </Label>
               <div className="relative">
@@ -148,7 +154,7 @@ export default function LoginForm() {
                   id="password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="••••••••"
-                  className="pl-10 pr-10"
+                  className="bg-white pl-10 pr-10 text-slate-900 placeholder:text-slate-400"
                   {...register('password')}
                 />
                 <button
@@ -187,7 +193,7 @@ export default function LoginForm() {
           </form>
 
           <div className="mt-8 space-y-2 text-center">
-            <Link href={ROUTES.HOME} className="flex items-center justify-center gap-1 text-sm text-[#1A3A8F] hover:underline">
+            <Link href={ROUTES.HOME} className="flex items-center justify-center gap-1 text-sm font-semibold text-[#0F2F75] hover:underline">
               ← Back to Website
             </Link>
             <p className="text-xs text-gray-400">YCDO Admin Portal v1.0</p>

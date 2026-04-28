@@ -2,21 +2,24 @@
 
 import { motion } from '@/components/common/MotionDiv';
 import { BadgeCheck, Scale } from 'lucide-react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeUp } from '@/utils/motion';
 
 interface LegalInfoItem {
-  label: string;
-  value: string;
+  labelKey: 'regYear' | 'taxStatus' | 'license' | 'hq';
+  valueKey: 'regYearVal' | 'taxStatusVal' | 'licenseVal' | 'hqVal';
 }
 
 const legalInfo: LegalInfoItem[] = [
-  { label: 'Registration Year', value: '1991 (Social Welfare Department)' },
-  { label: 'Tax Status', value: 'FBR Registered (100% Tax Exempt)' },
-  { label: 'License Number', value: 'SW/MD-742-91-V' },
-  { label: 'Headquarters', value: 'YCDO Complex, Multan Road, Pakistan' },
+  { labelKey: 'regYear', valueKey: 'regYearVal' },
+  { labelKey: 'taxStatus', valueKey: 'taxStatusVal' },
+  { labelKey: 'license', valueKey: 'licenseVal' },
+  { labelKey: 'hq', valueKey: 'hqVal' },
 ];
 
 export default function LegalStatus() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="bg-white py-24">
       <div className="container mx-auto px-12">
@@ -32,14 +35,14 @@ export default function LegalStatus() {
           <div className="md:max-w-2xl">
             <h2 className="mb-8 flex items-center gap-4 text-3xl font-black">
               <Scale className="h-10 w-10 text-[#fe5553]" />
-              Legal & Registration Status
+              {t('about.legal.title')}
             </h2>
 
             <div className="grid grid-cols-1 gap-8 text-[#dce1ff] md:grid-cols-2">
               {legalInfo.map((item) => (
-                <div key={item.label}>
-                  <p className="mb-1 text-xs font-bold uppercase tracking-widest opacity-60">{item.label}</p>
-                  <p className="text-xl font-bold">{item.value}</p>
+                <div key={item.labelKey}>
+                  <p className={`mb-1 text-xs font-bold tracking-widest opacity-60 ${locale === 'en' ? 'uppercase' : ''}`}>{t(`about.legal.${item.labelKey}`)}</p>
+                  <p className="text-xl font-bold">{t(`about.legal.${item.valueKey}`)}</p>
                 </div>
               ))}
             </div>
@@ -47,8 +50,8 @@ export default function LegalStatus() {
 
           <div className="mt-12 rounded-2xl border border-white/20 bg-white/10 p-8 backdrop-blur-md md:mt-0">
             <BadgeCheck className="mb-4 h-12 w-12 text-[#fe5553]" />
-            <p className="text-lg font-bold">PCP Certified NGO</p>
-            <p className="text-sm opacity-70">Evaluated for internal governance & transparency.</p>
+            <p className="text-lg font-bold">{t('about.legal.certifiedTitle')}</p>
+            <p className="text-sm opacity-70">{t('about.legal.certifiedDesc')}</p>
           </div>
         </motion.div>
       </div>

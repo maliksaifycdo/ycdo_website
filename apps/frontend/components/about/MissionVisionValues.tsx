@@ -2,12 +2,12 @@
 
 import { motion } from '@/components/common/MotionDiv';
 import { Eye, Heart, Target } from 'lucide-react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { cardHover, staggerContainer, staggerItem } from '@/utils/motion';
 
 interface ValueCard {
   icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  description: string;
+  msgKey: 'mission' | 'vision' | 'values';
   hoverBg: string;
   iconColor: string;
   titleColor: string;
@@ -16,27 +16,21 @@ interface ValueCard {
 const cards: ValueCard[] = [
   {
     icon: Target,
-    title: 'Our Mission',
-    description:
-      'To provide accessible, high-quality, and compassionate healthcare to underserved communities through sustainable medical institutions and outreach programs.',
+    msgKey: 'mission',
     hoverBg: 'hover:bg-[#1A3A8F]',
     iconColor: 'text-[#1A3A8F]',
     titleColor: 'text-[#1A3A8F]',
   },
   {
     icon: Eye,
-    title: 'Our Vision',
-    description:
-      'A society where every individual has the right and access to the best medical facilities, regardless of their socio-economic status.',
+    msgKey: 'vision',
     hoverBg: 'hover:bg-[#C0272D]',
     iconColor: 'text-[#C0272D]',
     titleColor: 'text-[#C0272D]',
   },
   {
     icon: Heart,
-    title: 'Core Values',
-    description:
-      'Integrity in action, empathy in care, excellence in service, and transparency in every donation received.',
+    msgKey: 'values',
     hoverBg: 'hover:bg-[#1A7A3C]',
     iconColor: 'text-[#1A7A3C]',
     titleColor: 'text-[#1A7A3C]',
@@ -44,8 +38,10 @@ const cards: ValueCard[] = [
 ];
 
 export default function MissionVisionValues() {
+  const { t } = useLocale();
+
   return (
-    <section className="bg-white py-24">
+    <section id="mission" className="bg-white py-24">
       <div className="container mx-auto px-12">
         <motion.div
           variants={staggerContainer}
@@ -56,9 +52,21 @@ export default function MissionVisionValues() {
         >
           {cards.map((card) => {
             const Icon = card.icon;
+            const title =
+              card.msgKey === 'mission'
+                ? t('about.missionVision.missionTitle')
+                : card.msgKey === 'vision'
+                  ? t('about.missionVision.visionTitle')
+                  : t('about.missionVision.valuesTitle');
+            const description =
+              card.msgKey === 'mission'
+                ? t('about.missionVision.missionDesc')
+                : card.msgKey === 'vision'
+                  ? t('about.missionVision.visionDesc')
+                  : t('about.missionVision.valuesDesc');
             return (
               <motion.article
-                key={card.title}
+                key={card.msgKey}
                 variants={staggerItem}
                 initial="rest"
                 whileHover="hover"
@@ -70,10 +78,10 @@ export default function MissionVisionValues() {
                     <Icon className={`h-8 w-8 ${card.iconColor} transition-colors duration-500 group-hover:text-white`} />
                   </div>
                   <h3 className={`mb-4 text-2xl font-black ${card.titleColor} transition-colors duration-500 group-hover:text-white`}>
-                    {card.title}
+                    {title}
                   </h3>
                   <p className="leading-relaxed text-slate-600 transition-colors duration-500 group-hover:text-white/80">
-                    {card.description}
+                    {description}
                   </p>
                 </motion.div>
               </motion.article>

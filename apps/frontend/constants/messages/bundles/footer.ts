@@ -1,0 +1,46 @@
+export const footerBundle = {
+  en: {
+    footer: {
+      tagline:
+        'Serving the underserved with dignity and professional excellence for over three decades.',
+      quickLinksTitle: 'Quick Links',
+      programsTitle: 'Programs',
+      newsletterTitle: 'Newsletter',
+      newsletterDesc: 'Stay updated with our latest impact stories.',
+      emailPlaceholder: 'Your Email',
+      copyright: '© 2024 YCDO. All rights reserved.',
+      headOffice: 'Head Office: Lahore, Pakistan',
+      impactReports: 'Impact Reports',
+      privacyPolicy: 'Privacy Policy',
+      termsOfService: 'Terms of Service',
+      volunteerPortal: 'Volunteer Portal',
+      healthcareRelief: 'Healthcare Relief',
+      educationFund: 'Education Fund',
+      safeWater: 'Safe Water Initiative',
+      zakatPrograms: 'Zakat Programs',
+      subscribedToast: 'Subscribed: {{email}}',
+    },
+  },
+  ur: {
+    footer: {
+      tagline:
+        'تیس سال سے زائد عرصے سے عزت نفس اور پیشہ ورانہ اعتماد کے ساتھ محروم طبقات کی خدمت۔',
+      quickLinksTitle: 'فوری روابط',
+      programsTitle: 'پروگرام',
+      newsletterTitle: 'نیوز لیٹر',
+      newsletterDesc: 'ہماری تازہ ترین کہانیوں سے باخبر رہیں۔',
+      emailPlaceholder: 'آپ کا ای میل',
+      copyright: '© ۲۰۲۴ وائے سی ڈی او۔ تمام حقوق محفوظ۔',
+      headOffice: 'مرکزی دفتر: لاہور، پاکستان',
+      impactReports: 'اثرات کی رپورٹیں',
+      privacyPolicy: 'رازداری کی پالیسی',
+      termsOfService: 'خدمات کی شرائط',
+      volunteerPortal: 'رضاکارانہ پورٹل',
+      healthcareRelief: 'صحت کی امداد',
+      educationFund: 'تعلیمی فنڈ',
+      safeWater: 'محفوظ پانی کا منصوبہ',
+      zakatPrograms: 'زکوٰۃ پروگرام',
+      subscribedToast: 'سبسکرائب شدہ: {{email}}',
+    },
+  },
+} as const;

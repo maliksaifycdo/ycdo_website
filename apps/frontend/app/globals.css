@@ -36,6 +36,18 @@
   html { @apply scroll-smooth; }
 }
 
+/* Keep form fields readable on browsers that force autofill colors */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #0f172a; /* slate-900 */
+  transition: background-color 9999s ease-in-out 0s;
+  caret-color: #0f172a;
+}
+
 @layer components {
   .section-padding { @apply py-16 md:py-24; }
   .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }

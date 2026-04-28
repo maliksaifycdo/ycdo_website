@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
+import { useLocale } from '@/contexts/LocaleContext';
 import { slideInLeft, slideInRight } from '@/utils/motion';
 
 export default function MissionSection() {
+  const { t } = useLocale();
+
   return (
     <section className="mx-auto max-w-7xl px-8 py-24">
       <div className="grid items-center gap-20 md:grid-cols-2">
@@ -15,14 +18,16 @@ export default function MissionSection() {
           viewport={{ once: true, margin: '-50px' }}
           className="space-y-6"
         >
-          <span className="text-sm font-black uppercase tracking-[0.2em] text-[#1A7A3C]">WHO WE ARE</span>
-          <h2 className="text-5xl font-black leading-tight tracking-tight text-[#1A3A8F]">A 30-Year Legacy of Hope and Service</h2>
+          <span className="text-sm font-black uppercase tracking-[0.2em] text-[#1A7A3C]">{t('home.mission.kicker')}</span>
+          <h2 className="text-5xl font-black leading-tight tracking-tight text-[#1A3A8F]">{t('home.mission.title')}</h2>
           <div className="space-y-4 text-lg leading-relaxed text-slate-600">
-            <p>YCDO stands as a beacon of dignity for those most in need. Our journey began with a simple vision: to ensure no person is deprived of basic rights due to poverty.</p>
-            <p>Today, we operate a nationwide network of healthcare, education, and social support systems, powered by the spirit of volunteerism and public trust.</p>
+            <p>{t('home.mission.p1')}</p>
+            <p>{t('home.mission.p2')}</p>
           </div>
           <div className="pt-6">
-            <button className="rounded-lg bg-[#C0272D] px-8 py-4 font-bold text-white shadow-lg transition-all hover:-translate-y-[2px] hover:bg-[#9B1B20]">Learn Our Story</button>
+            <button type="button" className="rounded-lg bg-[#C0272D] px-8 py-4 font-bold text-white shadow-lg transition-all hover:-translate-y-[2px] hover:bg-[#9B1B20]">
+              {t('home.mission.cta')}
+            </button>
           </div>
         </motion.div>
 
@@ -47,8 +52,8 @@ export default function MissionSection() {
               />
             </div>
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-8 text-white">
-              <blockquote className="mb-4 text-xl italic font-medium">"Our mission is simple yet profound: to heal, to teach, and to uplift every soul that seeks our hand."</blockquote>
-              <p className="font-bold">— Zaheer Babar Rana, Founder</p>
+              <blockquote className="mb-4 text-xl italic font-medium">{t('home.mission.quote')}</blockquote>
+              <p className="font-bold">{t('home.mission.attribution')}</p>
             </div>
           </div>
         </motion.div>

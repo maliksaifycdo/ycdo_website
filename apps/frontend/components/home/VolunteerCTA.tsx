@@ -3,9 +3,12 @@
 import Link from 'next/link';
 import { motion } from '@/components/common/MotionDiv';
 import { ROUTES } from '@/constants/routes';
+import { useLocale } from '@/contexts/LocaleContext';
 import { scaleIn } from '@/utils/motion';
 
 export default function VolunteerCTA() {
+  const { t } = useLocale();
+
   return (
     <section className="mx-8 mb-24">
       <motion.div
@@ -26,14 +29,14 @@ export default function VolunteerCTA() {
 
         <div className="relative z-10 mx-auto max-w-3xl">
           <h2 className="mb-8 text-5xl font-black leading-tight text-white md:text-6xl">
-            Join Us in Writing the Next Chapter of Impact.
+            {t('home.volunteerCta.title')}
           </h2>
           <div className="flex flex-wrap justify-center gap-6">
             <Link href={ROUTES.CONTACT} className="rounded-xl bg-white px-12 py-5 text-xl font-black text-[#C0272D] shadow-2xl transition-all hover:bg-slate-100">
-              Volunteer With Us
+              {t('home.volunteerCta.volunteerBtn')}
             </Link>
             <Link href={ROUTES.DONATE} className="rounded-xl border-2 border-white px-12 py-5 text-xl font-black text-white transition-all hover:bg-white/10">
-              Make a Donation
+              {t('home.volunteerCta.donationBtn')}
             </Link>
           </div>
         </div>

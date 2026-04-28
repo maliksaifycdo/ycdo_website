@@ -3,22 +3,41 @@
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
 import { MapPin } from 'lucide-react';
+import { useMemo } from 'react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { slideInLeft, staggerContainer, staggerItem } from '@/utils/motion';
 
 interface LocationPin {
-  label: string;
+  key: 'islamabad' | 'lahore' | 'multan';
   top?: string;
   left?: string;
   right?: string;
 }
 
 const locations: LocationPin[] = [
-  { label: 'ISLAMABAD HUB', top: '25%', left: '50%' },
-  { label: 'LAHORE UNIT', top: '66%', left: '33%' },
-  { label: 'MULTAN CARE', top: '75%', right: '50%' },
+  { key: 'islamabad', top: '25%', left: '50%' },
+  { key: 'lahore', top: '66%', left: '33%' },
+  { key: 'multan', top: '75%', right: '50%' },
 ];
 
 export default function HospitalNetwork() {
+  const { t } = useLocale();
+
+  const regions = useMemo(
+    () => [
+      { title: t('home.hospitalNetwork.region1Title'), desc: t('home.hospitalNetwork.region1Desc') },
+      { title: t('home.hospitalNetwork.region2Title'), desc: t('home.hospitalNetwork.region2Desc') },
+      { title: t('home.hospitalNetwork.region3Title'), desc: t('home.hospitalNetwork.region3Desc') },
+    ],
+    [t],
+  );
+
+  const pinLabel = (key: LocationPin['key']) => {
+    if (key === 'islamabad') return t('home.hospitalNetwork.pinIslamabad');
+    if (key === 'lahore') return t('home.hospitalNetwork.pinLahore');
+    return t('home.hospitalNetwork.pinMultan');
+  };
+
   return (
     <section className="grid min-h-[600px] md:grid-cols-2">
       <motion.div
@@ -28,8 +47,8 @@ export default function HospitalNetwork() {
         viewport={{ once: true }}
         className="flex flex-col justify-center bg-[#1A3A8F] p-12 text-white md:p-24"
       >
-        <h2 className="mb-8 text-5xl font-black">16+ Specialized Hospitals</h2>
-        <p className="mb-12 text-xl leading-relaxed text-white/85">Our medical footprint covers critical zones across Pakistan, ensuring expert care is never out of reach.</p>
+        <h2 className="mb-8 text-5xl font-black">{t('home.hospitalNetwork.title')}</h2>
+        <p className="mb-12 text-xl leading-relaxed text-white/85">{t('home.hospitalNetwork.subtitle')}</p>
 
         <motion.div
           variants={staggerContainer}
@@ -38,9 +57,7 @@ export default function HospitalNetwork() {
           viewport={{ once: true }}
           className="space-y-6"
         >
-          {[{
-            title: 'Central Regional Hub', desc: '3 High-capacity multi-specialty trauma centers.'
-          }, { title: 'Southern Network', desc: '5 Maternity and child healthcare clinics.' }, { title: 'Northern Outreach', desc: '8 Primary care units in mountainous districts.' }].map((item) => (
+          {regions.map((item) => (
             <motion.div key={item.title} variants={staggerItem} className="flex items-start gap-4">
               <MapPin className="pt-1 text-[#C0272D]" />
               <div>
@@ -66,7 +83,7 @@ export default function HospitalNetwork() {
 
           {locations.map((pin) => (
             <div
-              key={pin.label}
+              key={pin.key}
               className="group absolute flex -translate-y-1/2 flex-col items-center"
               style={{ top: pin.top, left: pin.left, right: pin.right }}
             >
@@ -78,7 +95,7 @@ export default function HospitalNetwork() {
                 <MapPin className="h-10 w-10 fill-current" />
               </motion.div>
               <span className="rounded bg-white px-2 py-1 text-xs font-black text-[#1A3A8F] opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
-                {pin.label}
+                {pinLabel(pin.key)}
               </span>
             </div>
           ))}

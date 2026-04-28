@@ -1,0 +1,48 @@
+export const navCommonBundle = {
+  en: {
+    nav: {
+      home: 'Home',
+      mission: 'Mission',
+      founder: 'Founder',
+      constitution: 'Constitution',
+      projects: 'Projects',
+      community: 'Community',
+      gallery: 'Gallery',
+      news: 'News',
+      contact: 'Contact',
+      about: 'About',
+    },
+    common: {
+      donateNow: 'Donate Now',
+      learnMore: 'Learn More',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
+      loading: 'Loading…',
+      viewDetails: 'View Details',
+      subscribe: 'Subscribe',
+    },
+  },
+  ur: {
+    nav: {
+      home: 'ہوم',
+      mission: 'مشن',
+      founder: 'بانی',
+      constitution: 'آئین',
+      projects: 'منصوبے',
+      community: 'برادری',
+      gallery: 'گیلری',
+      news: 'خبریں',
+      contact: 'رابطہ',
+      about: 'ہمارے بارے میں',
+    },
+    common: {
+      donateNow: 'عطیہ کریں',
+      learnMore: 'مزید جانیں',
+      openMenu: 'مینو کھولیں',
+      closeMenu: 'مینو بند کریں',
+      loading: 'لوڈ ہو رہا ہے…',
+      viewDetails: 'تفصیلات دیکھیں',
+      subscribe: 'سبسکرائب کریں',
+    },
+  },
+} as const;

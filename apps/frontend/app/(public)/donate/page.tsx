@@ -1,23 +1,10 @@
-'use client';
+import type { Metadata } from 'next';
+import { getCmsMetadata, renderCmsPage } from '@/lib/cmsPage';
 
-import { useState } from 'react';
-import { DonationCampaign } from '@ycdo/shared';
-import DonateHero from '@/components/donate/DonateHero';
-import CampaignCards from '@/components/donate/CampaignCards';
-import DonationForm from '@/components/donate/DonationForm';
-import BankDetails from '@/components/donate/BankDetails';
-import Transparency from '@/components/donate/Transparency';
+export async function generateMetadata(): Promise<Metadata> {
+  return getCmsMetadata('donate');
+}
 
-export default function DonatePage() {
-  const [selectedCampaign, setSelectedCampaign] = useState<DonationCampaign | null>(null);
-
-  return (
-    <main className="scroll-smooth">
-      <DonateHero />
-      <CampaignCards onSelectCampaign={setSelectedCampaign} />
-      <DonationForm selectedCampaign={selectedCampaign} />
-      <BankDetails />
-      <Transparency />
-    </main>
-  );
+export default async function Page() {
+  return renderCmsPage('donate');
 }

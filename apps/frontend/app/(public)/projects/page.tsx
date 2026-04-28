@@ -1,12 +1,10 @@
-﻿import type { Metadata } from 'next';
-import ProjectsPageClient from '@/components/projects/ProjectsPageClient';
+import type { Metadata } from 'next';
+import { getCmsMetadata, renderCmsPage } from '@/lib/cmsPage';
 
-export const metadata: Metadata = {
-  title: 'Our Projects',
-  description:
-    '15+ humanitarian programs across healthcare, education, food security, water, and community services in Pakistan.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return getCmsMetadata('projects');
+}
 
-export default function ProjectsPage() {
-  return <ProjectsPageClient />;
+export default async function Page() {
+  return renderCmsPage('projects');
 }

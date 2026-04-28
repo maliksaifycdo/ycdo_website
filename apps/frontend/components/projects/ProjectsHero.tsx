@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
-import { fadeUp, staggerContainer, staggerItem } from '@/utils/motion';
+import { useLocale } from '@/contexts/LocaleContext';
+import { fadeUp, staggerContainer } from '@/utils/motion';
 
 export default function ProjectsHero() {
+  const { t, locale } = useLocale();
+
   return (
     <header className="relative overflow-hidden bg-gradient-to-br from-[#1A3A8F] via-[#1A3A8F] to-[#1A3A8F] pb-24 pt-32 md:pb-32 md:pt-48">
       <div className="pointer-events-none absolute inset-0 opacity-20">
@@ -26,19 +29,19 @@ export default function ProjectsHero() {
           animate="visible"
           className="max-w-3xl"
         >
-          <motion.span variants={fadeUp} className="mb-4 block text-xs font-bold uppercase tracking-[0.2em] text-[#fe5553]">
-            Humanitarian Impact
+          <motion.span variants={fadeUp} className={`mb-4 block text-xs font-bold tracking-[0.2em] text-[#fe5553] ${locale === 'en' ? 'uppercase' : ''}`}>
+            {t('pages.projects.kicker')}
           </motion.span>
           <motion.h1
             variants={fadeUp}
             className="mb-6 text-5xl font-black leading-tight tracking-tighter text-white md:text-7xl"
           >
-            Our Projects &
+            {t('pages.projects.h1a')}
             <br />
-            <span className="text-[#dce1ff]">Programs</span>
+            <span className="text-[#dce1ff]">{t('pages.projects.h1b')}</span>
           </motion.h1>
           <motion.p variants={fadeUp} className="max-w-xl text-lg leading-relaxed text-[#e5eeff]/80">
-            Transforming lives through structured social interventions across Pakistan. From healthcare to orphan care, we build sustainable futures.
+            {t('pages.projects.subtitle')}
           </motion.p>
         </motion.div>
       </div>

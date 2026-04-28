@@ -5,9 +5,12 @@ import Link from 'next/link';
 import { motion } from '@/components/common/MotionDiv';
 import { Link2, Mail, Share2 } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
+import { useLocale } from '@/contexts/LocaleContext';
 import { scaleIn, slideInLeft, slideInRight } from '@/utils/motion';
 
 export default function Leadership() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="bg-slate-200 py-24">
       <div className="container mx-auto px-12">
@@ -42,7 +45,7 @@ export default function Leadership() {
                 transition={{ delay: 0.5 }}
                 className="absolute -bottom-10 -right-10 flex h-48 w-48 animate-pulse items-center justify-center rounded-full bg-[#C0272D] p-8 text-center text-white"
               >
-                <p className="text-sm font-bold uppercase tracking-tighter">Leading with Compassion</p>
+                <p className={`text-sm font-bold tracking-tighter ${locale === 'en' ? 'uppercase' : ''}`}>{t('about.leadership.badge')}</p>
               </motion.div>
             </motion.div>
 
@@ -52,17 +55,13 @@ export default function Leadership() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <span className="mb-4 block text-sm font-bold uppercase tracking-widest text-[#1A3A8F]">Executive Leadership</span>
-              <h2 className="mb-2 text-5xl font-black text-[#1A3A8F]">Zaheer Babar Rana</h2>
-              <p className="mb-8 text-xl font-bold text-[#C0272D]">Founder</p>
+              <span className={`mb-4 block text-sm font-bold tracking-widest text-[#1A3A8F] ${locale === 'en' ? 'uppercase' : ''}`}>{t('about.leadership.kicker')}</span>
+              <h2 className="mb-2 text-5xl font-black text-[#1A3A8F]">{t('about.leadership.name')}</h2>
+              <p className="mb-8 text-xl font-bold text-[#C0272D]">{t('about.leadership.role')}</p>
 
               <div className="mb-8 space-y-4 text-lg leading-relaxed text-slate-600">
-                <p>
-                  With over two decades of experience in social development, Zaheer Babar Rana has been the cornerstone of YCDO&apos;s strategic expansion.
-                </p>
-                <p>
-                  His vision of &quot;Empowerment through Health&quot; has transformed YCDO from a local NGO into a powerhouse of humanitarian relief in the region.
-                </p>
+                <p>{t('about.leadership.p1')}</p>
+                <p>{t('about.leadership.p2')}</p>
               </div>
 
               <div className="flex space-x-6">

@@ -11,6 +11,7 @@ import {
   CalendarCheck,
   ChevronLeft,
   ChevronRight,
+  FileText,
   FolderKanban,
   HandHeart,
   Images,
@@ -31,6 +32,7 @@ import type { LucideIcon } from 'lucide-react';
 
 const iconMap: Record<(typeof ADMIN_NAV_LINKS)[number]['icon'], LucideIcon> = {
   LayoutDashboard,
+  FileText,
   FolderKanban,
   Building2,
   Newspaper,

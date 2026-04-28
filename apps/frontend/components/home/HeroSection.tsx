@@ -4,11 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from '@/components/common/MotionDiv';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 import { ROUTES } from '@/constants/routes';
+import { useLocale } from '@/contexts/LocaleContext';
 import { scaleIn, slideInRight, staggerContainer, staggerItem } from '@/utils/motion';
 
 export default function HeroSection() {
+  const { t, locale } = useLocale();
+
   return (
     <header className="relative flex min-h-screen items-center overflow-hidden pt-20">
       <div className="absolute inset-0 z-0">
@@ -24,33 +26,41 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(26,58,143,0.9)_0%,rgba(192,39,45,0.7)_100%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 px-4 md:grid-cols-2 md:gap-12 md:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 px-4 pb-16 md:grid-cols-2 md:gap-12 md:px-8 lg:px-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="space-y-8"
+          className="max-w-xl space-y-5 md:max-w-none lg:max-w-xl xl:max-w-2xl"
         >
-          <motion.h1
-            variants={staggerItem}
-            className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
-          >
-            Serving Humanity.
-            <br />
-            Empowering Youth.
-          </motion.h1>
-          <motion.p variants={staggerItem} className="max-w-xl text-base leading-relaxed text-white/90 sm:text-lg md:text-xl lg:text-2xl">
-            30+ years of compassionate healthcare, education & community service across Pakistan.
-          </motion.p>
-          <motion.div variants={staggerItem} className="flex flex-wrap gap-4 pt-4">
+          <motion.div variants={staggerItem}>
+            <p className="text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              {t('home.hero.brandLine')}
+            </p>
+            <p className={`mt-3 text-lg font-semibold text-white/95 sm:text-xl md:text-2xl ${locale === 'ur' ? '' : 'tracking-wide'}`}>
+              {t('home.hero.orgName')}
+            </p>
+          </motion.div>
+
+          <motion.div variants={staggerItem} className="space-y-4 text-base leading-relaxed text-white/90 sm:text-lg">
+            <p>{t('home.hero.body1')}</p>
+            <p>{t('home.hero.body2')}</p>
+            <p>{t('home.hero.body3')}</p>
+            <p className="font-medium text-white">{t('home.hero.body4')}</p>
+          </motion.div>
+
+          <motion.div variants={staggerItem} className="flex flex-wrap gap-4 pt-2">
             <Link href={ROUTES.DONATE}>
               <Button className="bg-[#C0272D] px-10 py-4 text-lg font-bold text-white shadow-lg hover:bg-[#9B1B20]">
-                Donate Now
+                {t('home.hero.donateBtn')}
               </Button>
             </Link>
             <Link href={ROUTES.PROJECTS}>
-              <Button variant="outline" className="border-2 border-white px-10 py-4 text-lg font-bold text-white hover:bg-white/10 hover:text-white">
-                Our Work
+              <Button
+                variant="outline"
+                className="border-2 border-white/90 bg-[#142f72]/95 px-10 py-4 text-lg font-bold !text-white shadow-md backdrop-blur-sm hover:bg-[#1a3d8f] hover:!text-white dark:bg-[#142f72]/95 dark:hover:bg-[#1a3d8f]"
+              >
+                {t('home.hero.ourWorkBtn')}
               </Button>
             </Link>
           </motion.div>
@@ -75,10 +85,10 @@ export default function HeroSection() {
               />
             </div>
             <motion.div variants={scaleIn} initial="hidden" animate="visible" transition={{ delay: 0.25 }} className="absolute right-8 top-8 rounded-lg bg-[#C0272D] px-4 py-2 text-xl font-black text-white shadow-xl">
-              16+ Hospitals
+              {t('home.hero.cardBadge')}
             </motion.div>
-            <p className="px-2 text-lg font-bold text-[#1A3A8F]">Quality Care for All</p>
-            <p className="px-2 pb-2 text-slate-600">Dedicated medical teams serving 24/7 across the network.</p>
+            <p className="px-2 text-lg font-bold text-[#1A3A8F]">{t('home.hero.cardTitle')}</p>
+            <p className="px-2 pb-2 text-slate-600">{t('home.hero.cardDesc')}</p>
           </div>
         </motion.div>
       </div>

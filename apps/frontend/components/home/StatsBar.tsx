@@ -3,17 +3,23 @@
 import { motion } from '@/components/common/MotionDiv';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { useMemo } from 'react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeUp } from '@/utils/motion';
 
-const stats = [
-  { value: 16, suffix: '+', label: 'Hospitals' },
-  { value: 30, suffix: '+', label: 'Years' },
-  { value: 50000, suffix: '+', label: 'Lives Impacted' },
-  { value: 22, suffix: '+', label: 'Programs' },
-];
-
 export default function StatsBar() {
+  const { t, locale } = useLocale();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  const stats = useMemo(
+    () => [
+      { value: 16, suffix: '+', label: t('home.stats.hospitals') },
+      { value: 30, suffix: '+', label: t('home.stats.years') },
+      { value: 50000, suffix: '+', label: t('home.stats.lives') },
+      { value: 22, suffix: '+', label: t('home.stats.programs') },
+    ],
+    [t],
+  );
 
   return (
     <motion.section
@@ -30,7 +36,9 @@ export default function StatsBar() {
             <span className="mb-2 block text-4xl font-black text-white">
               <CountUp end={stat.value} suffix={stat.suffix} duration={2.5} start={inView ? undefined : 0} separator="," />
             </span>
-            <span className="text-sm font-bold uppercase tracking-widest text-white/80">{stat.label}</span>
+            <span className={`text-sm font-bold text-white/80 ${locale === 'en' ? 'uppercase tracking-widest' : ''}`}>
+              {stat.label}
+            </span>
           </div>
         ))}
       </div>

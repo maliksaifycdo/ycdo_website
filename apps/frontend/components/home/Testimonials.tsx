@@ -3,42 +3,48 @@
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
 import { Star } from 'lucide-react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { staggerContainer, staggerItem } from '@/utils/motion';
 
 interface Testimonial {
-  quote: string;
+  quoteKey: 't1quote' | 't2quote' | 't3quote';
+  roleKey: 't1role' | 't2role' | 't3role';
   name: string;
-  role: string;
   image: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    quote: 'YCDO provided my daughter with the heart surgery we could never afford. They did not just save her life; they saved our whole family.',
+    quoteKey: 't1quote',
+    roleKey: 't1role',
     name: 'Fatima Zahra',
-    role: 'Beneficiary, Punjab',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCBhqUI6eRXouT1qgX7-BanGCjs0-rNgp7_tkvTjZ1S_8HgggNc6WdM3iAq7RvuQDj6jdmXlwxq0YKS6nNzKaoed21F1GL9nqENXLUiPaUxQ8BTajrnvSpqxZukNIpwhRBNLmAldofmH8wuw2aShXbjo0wdd_zzanNxXxoexzK3HOZMJZMRosO-iXBT04R2fnwYoe49RhmeGOhETRbDvKUbb4Rzfm-FTs4UQzKlfrZo-MXmhJ9B7UD7x9cZTIAzsQWTJUb6j09sepTf',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCBhqUI6eRXouT1qgX7-BanGCjs0-rNgp7_tkvTjZ1S_8HgggNc6WdM3iAq7RvuQDj6jdmXlwxq0YKS6nNzKaoed21F1GL9nqENXLUiPaUxQ8BTajrnvSpqxZukNIpwhRBNLmAldofmH8wuw2aShXbjo0wdd_zzanNxXxoexzK3HOZMJZMRosO-iXBT04R2fnwYoe49RhmeGOhETRbDvKUbb4RzfmwFTs4UQzKlfrZo-MXmhJ9B7UD7x9cZTIAzsQWTJUb6j09sepTf',
   },
   {
-    quote: 'Volunteering here changed my perspective on youth leadership. YCDO empowers us to be the hands and feet of change.',
+    quoteKey: 't2quote',
+    roleKey: 't2role',
     name: 'Ahmed Khan',
-    role: 'Medical Volunteer',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBLlUk0a8O2p1UYWnkl55doerZzArSD0_4-l14smjxG3aKAHNpOJNmawenNdzk017a1jwunaVb64H0vG1Tk7bihsupqLUsOa2eEqxLog_WPxQEh5yJJ3YEuzoYm27cfEaZ643FUgX-klEPZH2Wt87c3cDBesYqFOHfri0KNIIUCzxjAT-pYh6rFc_5wK7lTIevFS75IR4rq8-mayt8NjPWdAouls9Wri7sM7pIYcTkR5_wdblWYyYgD01Tm93RUQ-oc-m4r9XnJhet2',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBLlUk4a8O2p1UYWnkl55doerZzArSD0_4-l14smjxG3aKAHNpOJNmawenNdzk017a1jwunaVb64H0vG1Tk7bihsupqLUsOa2eEqxLog_WPxQEh5yJJ3YEuzoYm27cfEaZ643FUgX-klEPZH2Wt87c3cDBesYqFOHfri0KNIIUCzxjAT-pYh6rFc_5wK7lTIevFS75IR4rq8-mayt8NjPWdAouls9Wri7sM7pIYcTkR5_wdblWYyYgD01Tm93RUQ-oc-m4r9XnJhet2',
   },
   {
-    quote: 'Transparency and impact are why we chose YCDO as our primary CSR partner. Their results in rural healthcare are unmatched.',
+    quoteKey: 't3quote',
+    roleKey: 't3role',
     name: 'Malik Arshad',
-    role: 'Corporate Partner',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuATCt2vl3eRZUAh4Wzjgx9ghZrtrjApZgLAJrA4MUhqOajYtuOO9NBm4qCy9zhb5ccXbf0_0YZSVlih9oIka48a-B5vXGaRe6o8_V5L27XVDI3114PQWuCjHoTvsJPZKbnSqgsht-IEtaAeQURvp3-mnLAS1qNcea3UcWcPYlD1ay1W1Z7No25N6xwGXX216PivIe5b1DFPkT-vBPdNIN9izGxkNDKz-yeCgRfADS6Gjf2QtAljyPQivO-HR3fsKsTagDQaNtsHlVGQ',
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuATCt2vl3eRZUAh4Wzjgx9ghZrtrjApZgLAJrA4MUhqOajYtuOO9NBm4qCy9zhb5ccXbf0_0YZSVlih9oIka48a-B5vXGaRe6o8_V5L27XVDI3114PQWuCjHoTvsJPZKbnSqgsht-IEtaAeQURvp3-mnLAS1qNcea3UcWcPYlD1ay1W1Z7No25N6xwGXX216PivIe5b1DFPkT-vBPdNIN9izGxkNDKz-yeCgRfADS6Gjf2QtAljyPQivO-HR3fsKsTagDQaNtsHlVGQ',
   },
 ];
 
 export default function Testimonials() {
+  const { t } = useLocale();
+
   return (
     <section className="bg-slate-100/70 py-24">
       <div className="mx-auto max-w-7xl px-8">
         <div className="mb-16 text-center">
-          <h2 className="text-4xl font-black text-[#1A3A8F]">Voices of Gratitude</h2>
+          <h2 className="text-4xl font-black text-[#1A3A8F]">{t('home.testimonials.title')}</h2>
         </div>
 
         <motion.div
@@ -55,14 +61,16 @@ export default function Testimonials() {
                   <Star key={`${item.name}-star-${idx}`} className="h-5 w-5 fill-current" />
                 ))}
               </div>
-              <blockquote className="mb-8 text-lg italic text-slate-600">"{item.quote}"</blockquote>
+              <blockquote className="mb-8 text-lg italic text-slate-600">
+                &ldquo;{t(`home.testimonials.${item.quoteKey}`)}&rdquo;
+              </blockquote>
               <div className="flex items-center gap-4">
                 <div className="relative h-12 w-12 overflow-hidden rounded-full">
                   <Image src={item.image} alt={item.name} fill sizes="48px" quality={85} loading="lazy" className="object-cover" />
                 </div>
                 <div>
                   <p className="font-bold text-[#1A3A8F]">{item.name}</p>
-                  <p className="text-sm text-slate-500">{item.role}</p>
+                  <p className="text-sm text-slate-500">{t(`home.testimonials.${item.roleKey}`)}</p>
                 </div>
               </div>
             </motion.article>

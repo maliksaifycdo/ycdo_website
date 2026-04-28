@@ -2,6 +2,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { useState } from 'react';
+import { LocaleProvider } from '@/contexts/LocaleContext';
 
 export default function Providers({ 
   children 
@@ -22,7 +23,9 @@ export default function Providers({
 
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <LocaleProvider>
+        {children}
+      </LocaleProvider>
       <Toaster
         position="top-right"
         toastOptions={{

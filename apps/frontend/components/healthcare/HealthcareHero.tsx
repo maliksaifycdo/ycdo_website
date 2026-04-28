@@ -3,9 +3,12 @@
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
 import toast from 'react-hot-toast';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeUp, slideInRight, staggerContainer } from '@/utils/motion';
 
 export default function HealthcareHero() {
+  const { t } = useLocale();
+
   const scrollToList = () => {
     document.getElementById('hospital-list')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -26,20 +29,21 @@ export default function HealthcareHero() {
       <div className="container relative z-20 mx-auto px-12">
         <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-3xl">
           <motion.h1 variants={fadeUp} className="mb-6 text-6xl font-extrabold leading-tight tracking-tight text-white">
-            YCDO Healthcare Network
+            {t('pages.healthcare.title')}
           </motion.h1>
           <motion.p variants={fadeUp} className="max-w-2xl text-xl font-light leading-relaxed text-[#dce1ff]">
-            Providing dignified, affordable, and high-quality medical services to underserved communities across the region. Because health is a fundamental right, not a privilege.
+            {t('pages.healthcare.subtitle')}
           </motion.p>
           <motion.div variants={slideInRight} className="mt-10 flex space-x-4">
-            <button onClick={scrollToList} className="rounded-lg bg-[#C0272D] px-8 py-4 text-lg font-bold text-white shadow-2xl transition-colors hover:bg-[#9B1B20]">
-              Find a Clinic
+            <button type="button" onClick={scrollToList} className="rounded-lg bg-[#C0272D] px-8 py-4 text-lg font-bold text-white shadow-2xl transition-colors hover:bg-[#9B1B20]">
+              {t('pages.healthcare.findClinic')}
             </button>
             <button
-              onClick={() => toast('Emergency hotline: 0800-HEALTH', { icon: 'ℹ️' })}
+              type="button"
+              onClick={() => toast(t('pages.healthcare.emergencyToast'), { icon: 'ℹ️' })}
               className="rounded-lg border border-white/30 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
             >
-              Emergency Info
+              {t('pages.healthcare.emergencyInfo')}
             </button>
           </motion.div>
         </motion.div>

@@ -1,11 +1,12 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { useLocale } from '@/contexts/LocaleContext';
 
 const socials: {
   name: string;
   followers: string;
-  label: string;
+  labelKey: 'followers' | 'voices' | 'moments' | 'views';
   color: string;
   href: string;
   icon: ReactNode;
@@ -13,7 +14,7 @@ const socials: {
   {
     name: 'Facebook',
     followers: '120K+',
-    label: 'Followers',
+    labelKey: 'followers',
     color: '#1877F2',
     href: '#',
     icon: (
@@ -25,7 +26,7 @@ const socials: {
   {
     name: 'Twitter',
     followers: '45K+',
-    label: 'Voices',
+    labelKey: 'voices',
     color: '#1DA1F2',
     href: '#',
     icon: (
@@ -37,7 +38,7 @@ const socials: {
   {
     name: 'Instagram',
     followers: '85K+',
-    label: 'Moments',
+    labelKey: 'moments',
     color: '#E4405F',
     href: '#',
     icon: (
@@ -49,7 +50,7 @@ const socials: {
   {
     name: 'YouTube',
     followers: '200K+',
-    label: 'Views',
+    labelKey: 'views',
     color: '#FF0000',
     href: '#',
     icon: (
@@ -61,28 +62,33 @@ const socials: {
 ];
 
 export default function SocialStrip() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="border-y border-slate-200/80 bg-[#F1F5F9] py-12">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-12 md:justify-between">
-        <h5 className="text-sm font-bold uppercase tracking-widest text-[#00236f]">Follow our impact:</h5>
+        <h5 className={`text-sm font-bold tracking-widest text-[#00236f] ${locale === 'en' ? 'uppercase' : ''}`}>{t('socialStrip.heading')}</h5>
         <div className="flex flex-wrap justify-center gap-12">
-          {socials.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              className="group flex items-center gap-4"
-              aria-label={`${s.name} — ${s.followers} ${s.label}`}
-              style={{ ['--brand' as string]: s.color }}
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#00236f] shadow-md transition-all duration-300 group-hover:bg-[var(--brand)] group-hover:text-white">
-                {s.icon}
-              </div>
-              <div>
-                <p className="text-lg font-black text-[#00236f]">{s.followers}</p>
-                <p className="text-[10px] font-bold uppercase text-slate-600">{s.label}</p>
-              </div>
-            </a>
-          ))}
+          {socials.map((s) => {
+            const label = t(`socialStrip.${s.labelKey}`);
+            return (
+              <a
+                key={s.name}
+                href={s.href}
+                className="group flex items-center gap-4"
+                aria-label={`${s.name} — ${s.followers} ${label}`}
+                style={{ ['--brand' as string]: s.color }}
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#00236f] shadow-md transition-all duration-300 group-hover:bg-[var(--brand)] group-hover:text-white">
+                  {s.icon}
+                </div>
+                <div>
+                  <p className="text-lg font-black text-[#00236f]">{s.followers}</p>
+                  <p className={`text-[10px] font-bold uppercase text-slate-600 ${locale === 'en' ? '' : ''}`}>{label}</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

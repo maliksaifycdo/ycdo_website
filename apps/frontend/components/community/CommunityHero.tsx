@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeUp } from '@/utils/motion';
 
 export default function CommunityHero() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="relative flex h-[450px] items-center overflow-hidden bg-[#1A3A8F]">
       <div className="absolute inset-0 z-0">
@@ -21,15 +24,15 @@ export default function CommunityHero() {
       </div>
       <div className="container relative z-10 mx-auto px-12">
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-3xl">
-          <span className="mb-6 inline-block rounded-full bg-[#C0272D]/20 px-4 py-1 text-xs font-bold uppercase tracking-[0.2em] text-[#ffdad7]">
-            Our Commitment
+          <span className={`mb-6 inline-block rounded-full bg-[#C0272D]/20 px-4 py-1 text-xs font-bold tracking-[0.2em] text-[#ffdad7] ${locale === 'en' ? 'uppercase' : ''}`}>
+            {t('pages.community.kicker')}
           </span>
           <h1 className="mb-8 text-7xl font-black leading-[0.95] tracking-tight text-white">
-            Community <br />
-            Services
+            {t('pages.community.h1a')} <br />
+            {t('pages.community.h1b')}
           </h1>
           <p className="max-w-xl text-xl leading-relaxed text-[#dce1ff]">
-            Dignified support systems built to empower every individual. From immediate relief to long-term welfare, we serve as the backbone of community resilience.
+            {t('pages.community.subtitle')}
           </p>
         </motion.div>
       </div>

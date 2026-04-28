@@ -1,11 +1,14 @@
 ﻿'use client';
 
 import { motion } from '@/components/common/MotionDiv';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeIn } from '@/utils/motion';
 
 const partners = ['WHO', 'UNICEF', 'RED CROSS', 'PPHI', 'BILL & MELINDA', 'UK AID'];
 
 export default function Partners() {
+  const { t, locale } = useLocale();
+
   return (
     <motion.section
       variants={fadeIn}
@@ -15,8 +18,8 @@ export default function Partners() {
       className="border-t border-slate-300/30 bg-slate-100 py-16"
     >
       <div className="container mx-auto px-12">
-        <p className="mb-12 text-center text-sm font-bold uppercase tracking-widest text-slate-600">
-          Our Strategic Partners
+        <p className={`mb-12 text-center text-sm font-bold tracking-widest text-slate-600 ${locale === 'en' ? 'uppercase' : ''}`}>
+          {t('about.partners.title')}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-16 grayscale opacity-50 transition-all duration-500 hover:grayscale-0 hover:opacity-100">
           {partners.map((partner) => (

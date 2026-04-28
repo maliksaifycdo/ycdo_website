@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
 import { ChevronDown, PlayCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useLocale } from '@/contexts/LocaleContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -18,6 +19,8 @@ const HERO_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCXbITOeglG0nS6GD-0BviNNG7GcP6LbhqydlFUWmTzxb1FrlScCRxFi826mVo5Ov2VuWP10UizZCMg9AnOeMfb11rWKfpfL0dYDRg-qr8LN1MqXl32A6F-1drS1JLD2lrIou0ZB_nDy9PhJbyjXC6VJHkLq-spY3ADw__miKaRWTabk4WxjAEIDH4N1p_eEyMRJVUIkp5U2ZRW9dlHrUMxdwJz99a_6qBxwRqdVfbl0hzVRAxzJNA8ElwoJE_SNdN-eiOMoEJKYHrF';
 
 export default function DonateHero() {
+  const { t, locale } = useLocale();
+
   return (
     <header className="relative flex h-screen items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -38,9 +41,9 @@ export default function DonateHero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="mb-6 inline-block rounded-full bg-[#fe5553]/20 px-4 py-1 text-sm font-bold uppercase tracking-widest text-[#fe5553] backdrop-blur-sm"
+          className={`mb-6 inline-block rounded-full bg-[#fe5553]/20 px-4 py-1 text-sm font-bold tracking-widest text-[#fe5553] backdrop-blur-sm ${locale === 'en' ? 'uppercase' : ''}`}
         >
-          Impact Begins With You
+          {t('pages.donate.kicker')}
         </motion.span>
         <motion.h1
           custom={1}
@@ -49,8 +52,8 @@ export default function DonateHero() {
           variants={fadeUp}
           className="mb-8 text-5xl font-black leading-[0.9] tracking-tighter text-white md:text-7xl lg:text-8xl"
         >
-          Your Donation <br />
-          <span className="text-[#fe5553]">Saves Lives</span>
+          {t('pages.donate.h1a')} <br />
+          <span className="text-[#fe5553]">{t('pages.donate.h1b')}</span>
         </motion.h1>
         <motion.p
           custom={2}
@@ -59,8 +62,7 @@ export default function DonateHero() {
           variants={fadeUp}
           className="mx-auto mb-12 max-w-2xl text-lg font-light leading-relaxed text-[#e5eeff] md:text-2xl"
         >
-          Empowering the underprivileged in Pakistan through healthcare, education, and sustainable living. Join our
-          mission today.
+          {t('pages.donate.subtitle')}
         </motion.p>
         <motion.div
           custom={3}
@@ -82,15 +84,15 @@ export default function DonateHero() {
             }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            Donate Now
+            {t('pages.donate.donateBtn')}
           </motion.a>
           <button
             type="button"
-            onClick={() => toast('Video coming soon', { icon: 'ℹ️' })}
+            onClick={() => toast(t('pages.donate.videoToast'), { icon: 'ℹ️' })}
             className="flex items-center gap-2 rounded-xl px-6 py-5 font-semibold text-white transition-all hover:bg-white/10"
           >
             <PlayCircle className="h-6 w-6 shrink-0" aria-hidden />
-            Watch Our Impact
+            {t('pages.donate.watchBtn')}
           </button>
         </motion.div>
       </div>

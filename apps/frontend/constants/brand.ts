@@ -9,19 +9,23 @@
 } as const;
 
 export const NAV_LINKS = [
-  { label: 'Home',      href: '/' },
-  { label: 'About',     href: '/about' },
-  { label: 'Projects',  href: '/projects' },
-  { label: 'Healthcare',href: '/healthcare' },
-  { label: 'Education', href: '/education' },
-  { label: 'Community', href: '/community' },
-  { label: 'Gallery',   href: '/gallery' },
-  { label: 'News',      href: '/news' },
-  { label: 'Contact',   href: '/contact' },
+  { key: 'home',      href: '/' },
+  { key: 'mission',   href: '/mission' },
+  { key: 'founder',   href: '/founder' },
+  { key: 'constitution', href: '/constitution.pdf', newTab: true },
+  { key: 'projects',  href: '/projects' },
+  { key: 'community', href: '/community' },
+  { key: 'gallery',   href: '/gallery' },
+  { key: 'news',      href: '/news' },
+  { key: 'contact',   href: '/contact' },
+  { key: 'about',     href: '/about' },
 ] as const;
+
+export type NavLinkKey = (typeof NAV_LINKS)[number]['key'];
 
 export const ADMIN_NAV_LINKS = [
   { label: 'Dashboard',    href: '/admin',                icon: 'LayoutDashboard' },
+  { label: 'CMS Pages',    href: '/admin/cms',            icon: 'FileText' },
   { label: 'Projects',     href: '/admin/projects',       icon: 'FolderKanban' },
   { label: 'Hospitals',    href: '/admin/hospitals',      icon: 'Building2' },
   { label: 'News',         href: '/admin/news',           icon: 'Newspaper' },

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from '@/components/common/MotionDiv';
+import { useLocale } from '@/contexts/LocaleContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -16,6 +17,8 @@ const HERO_IMAGE =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuA590e3cAjBZ6TSc00NY5vrcXoYYDWvxYPsXHuJHVByHNcMrezyskg9RwLXS1zGp7MvQRQDv3FHHc5txuoAhlRTAtOt08a2KcZMBPxh0Jn2Bj3XtdzbJESPTWgSuuWHT7UF-2-XfIlkLWh2rafepsh0pdP3xQ7Tdcz4g4r5QlstTTU-4iZ3m7JF-z7G_4xYWy8czg76t31DGzmEKBtFyvaMz7WYmqpXnPUREHuasJgbf9VNmc5drjjrFphcNrriWmRReamY2spGlsOo';
 
 export default function ContactHero() {
+  const { t, locale } = useLocale();
+
   return (
     <header className="relative overflow-hidden pb-24 pt-40">
       <div className="absolute inset-0 z-0">
@@ -36,9 +39,9 @@ export default function ContactHero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="mb-6 inline-block rounded-full bg-[#fe5553]/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#fe5553]"
+            className={`mb-6 inline-block rounded-full bg-[#fe5553]/20 px-3 py-1 text-xs font-bold tracking-widest text-[#fe5553] ${locale === 'en' ? 'uppercase' : ''}`}
           >
-            Get in Touch
+            {t('pages.contact.kicker')}
           </motion.span>
           <motion.h1
             custom={1}
@@ -47,7 +50,7 @@ export default function ContactHero() {
             variants={fadeUp}
             className="mb-8 text-5xl font-black leading-tight tracking-tight text-white md:text-6xl"
           >
-            Contact Us
+            {t('pages.contact.title')}
           </motion.h1>
           <motion.p
             custom={2}
@@ -56,8 +59,7 @@ export default function ContactHero() {
             variants={fadeUp}
             className="max-w-2xl text-lg leading-relaxed text-[#e5eeff]/80 md:text-xl"
           >
-            Whether you have questions about our humanitarian projects, wish to volunteer, or need support from our
-            healthcare centers, our dedicated team is here to help.
+            {t('pages.contact.subtitle')}
           </motion.p>
         </div>
       </div>

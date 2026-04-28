@@ -1,7 +1,13 @@
 ﻿export const ROUTES = {
   HOME:        '/',
+  MISSION:     '/mission',
+  FOUNDER:     '/founder',
+  CONSTITUTION:'/constitution.pdf',
   ABOUT:       '/about',
   PROJECTS:    '/projects',
+  PROJECTS_HEALTHCARE: '/projects/healthcare',
+  PROJECTS_EDUCATION: '/projects/education',
+  PROJECTS_FOOD_SERVICES: '/projects/food-services',
   HEALTHCARE:  '/healthcare',
   EDUCATION:   '/education',
   COMMUNITY:   '/community',

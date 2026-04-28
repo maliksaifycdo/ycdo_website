@@ -2,14 +2,12 @@
 
 import { motion } from '@/components/common/MotionDiv';
 import { Bus, Flag, Hospital, Rocket } from 'lucide-react';
+import { useLocale } from '@/contexts/LocaleContext';
 import { fadeUp, scaleIn, slideInLeft, slideInRight } from '@/utils/motion';
 
 interface TimelineItem {
   year: string;
-  title: string;
-  description: string;
-  quote: string;
-  color: 'primary' | 'secondary' | 'accent';
+  tk: 'y1991' | 'y2005' | 'y2018' | 'y2024';
   icon: React.ComponentType<{ className?: string }>;
   side: 'left' | 'right';
   cardStyle: string;
@@ -23,11 +21,7 @@ interface TimelineItem {
 const timelineItems: TimelineItem[] = [
   {
     year: '1991',
-    title: 'The Foundation',
-    description:
-      'Founded in Qasimpur Colony as a student-led initiative to provide basic first aid and education.',
-    quote: 'It started with a single room and an unwavering belief in community service.',
-    color: 'primary',
+    tk: 'y1991',
     icon: Flag,
     side: 'left',
     cardStyle: 'border-l-4 border-[#1A3A8F]',
@@ -39,10 +33,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     year: '2005',
-    title: 'First Hospital',
-    description: 'Transitioned from basic clinics to a fully equipped medical facility.',
-    quote: 'Launching our first surgical wing marked a new era in regional accessibility.',
-    color: 'secondary',
+    tk: 'y2005',
     icon: Hospital,
     side: 'right',
     cardStyle: 'border-r-4 border-[#C0272D]',
@@ -54,10 +45,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     year: '2018',
-    title: 'Mobile Health',
-    description: 'Deploying 5 mobile clinics to reach remote agrarian communities.',
-    quote: 'Taking healthcare to the doorsteps of the most vulnerable populations.',
-    color: 'accent',
+    tk: 'y2018',
     icon: Bus,
     side: 'left',
     cardStyle: 'border-l-4 border-[#1A7A3C]',
@@ -69,10 +57,7 @@ const timelineItems: TimelineItem[] = [
   },
   {
     year: '2024',
-    title: 'Today & Beyond',
-    description: 'Managing 16+ facilities with integrated digital health records.',
-    quote: 'Impacting 1M+ Lives Annually',
-    color: 'primary',
+    tk: 'y2024',
     icon: Rocket,
     side: 'right',
     cardStyle: 'bg-[#1A3A8F] text-white',
@@ -85,11 +70,13 @@ const timelineItems: TimelineItem[] = [
 ];
 
 export default function Timeline() {
+  const { t, locale } = useLocale();
+
   return (
     <section className="bg-slate-100 py-24">
       <div className="container mx-auto px-12">
         <div className="mb-20 text-center">
-          <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-[#1A3A8F]">Our Evolution</h2>
+          <h2 className={`mb-4 text-4xl font-black tracking-tighter text-[#1A3A8F] ${locale === 'en' ? 'uppercase' : ''}`}>{t('about.timeline.sectionTitle')}</h2>
           <div className="mx-auto h-1.5 w-24 rounded-full bg-[#C0272D]" />
         </div>
 
@@ -100,6 +87,9 @@ export default function Timeline() {
             {timelineItems.map((item, index) => {
               const Icon = item.icon;
               const isLeft = item.side === 'left';
+              const title = t(`about.timeline.${item.tk}Title`);
+              const description = t(`about.timeline.${item.tk}Desc`);
+              const quote = t(`about.timeline.${item.tk}Quote`);
 
               return (
                 <motion.div
@@ -115,8 +105,8 @@ export default function Timeline() {
                     <h3 className={`text-5xl font-black transition-colors ${item.yearMutedClass} ${item.yearHoverClass}`}>
                       {item.year}
                     </h3>
-                    <p className={`mt-2 text-xl font-bold ${item.titleClass}`}>{item.title}</p>
-                    <p className={`mt-2 max-w-xs text-slate-600 ${isLeft ? 'ml-auto' : ''}`}>{item.description}</p>
+                    <p className={`mt-2 text-xl font-bold ${item.titleClass}`}>{title}</p>
+                    <p className={`mt-2 max-w-xs text-slate-600 ${isLeft ? 'ml-auto' : ''}`}>{description}</p>
                   </div>
 
                   <motion.div
@@ -137,15 +127,15 @@ export default function Timeline() {
                     className={`mt-4 md:mt-0 md:w-1/2 ${isLeft ? 'md:pl-16' : 'text-right md:pr-16'}`}
                   >
                     <span className={`text-3xl font-black md:hidden ${item.mobileYearClass}`}>{item.year}</span>
-                    <h4 className={`text-xl font-bold md:hidden ${item.mobileYearClass}`}>{item.title}</h4>
+                    <h4 className={`text-xl font-bold md:hidden ${item.mobileYearClass}`}>{title}</h4>
                     <div className={`rounded-2xl p-8 shadow-sm ${item.cardStyle} ${item.year !== '2024' ? 'bg-white' : ''}`}>
                       {item.year === '2024' ? (
                         <>
-                          <p className="text-lg font-bold">{item.quote}</p>
-                          <p className="mt-2 text-sm opacity-80">Continually evolving for the future of humanity.</p>
+                          <p className="text-lg font-bold">{quote}</p>
+                          <p className="mt-2 text-sm opacity-80">{t('about.timeline.y2024Sub')}</p>
                         </>
                       ) : (
-                        <p className={`text-slate-600 ${item.year === '1991' ? 'italic' : ''}`}>{item.quote}</p>
+                        <p className={`text-slate-600 ${item.year === '1991' ? 'italic' : ''}`}>{quote}</p>
                       )}
                     </div>
                   </motion.div>

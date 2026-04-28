@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { motion, useInView } from '@/components/common/MotionDiv';
 import { useRef } from 'react';
 import { DonationCampaign } from '@ycdo/shared';
+import { useLocale } from '@/contexts/LocaleContext';
 
 export type CampaignCardData = {
-  title: string;
-  category: string;
+  key: 'c1' | 'c2' | 'c3' | 'c4';
   categoryBg: string;
   raised: string;
   percentage: number;
@@ -17,8 +17,7 @@ export type CampaignCardData = {
 
 const campaigns: CampaignCardData[] = [
   {
-    title: 'Emergency Medical Fund',
-    category: 'Healthcare',
+    key: 'c1',
     categoryBg: 'bg-[#1A3A8F]',
     raised: 'PKR 850k',
     percentage: 75,
@@ -27,8 +26,7 @@ const campaigns: CampaignCardData[] = [
     campaign: DonationCampaign.HEALTHCARE,
   },
   {
-    title: 'School Supplies Drive',
-    category: 'Education',
+    key: 'c2',
     categoryBg: 'bg-[#1A7A3C]',
     raised: 'PKR 420k',
     percentage: 42,
@@ -37,8 +35,7 @@ const campaigns: CampaignCardData[] = [
     campaign: DonationCampaign.EDUCATION,
   },
   {
-    title: 'Monthly Ration Kits',
-    category: 'Food Security',
+    key: 'c3',
     categoryBg: 'bg-[#C0272D]',
     raised: 'PKR 1.2M',
     percentage: 90,
@@ -47,8 +44,7 @@ const campaigns: CampaignCardData[] = [
     campaign: DonationCampaign.FOOD,
   },
   {
-    title: 'Solar Water Pumps',
-    category: 'Clean Water',
+    key: 'c4',
     categoryBg: 'bg-[#1A3A8F]',
     raised: 'PKR 300k',
     percentage: 15,
@@ -79,6 +75,8 @@ type Props = {
 };
 
 export default function CampaignCards({ onSelectCampaign }: Props) {
+  const { t, locale } = useLocale();
+
   const scrollToForm = (campaign: DonationCampaign) => {
     onSelectCampaign(campaign);
     document.getElementById('donation-form')?.scrollIntoView({ behavior: 'smooth' });
@@ -88,51 +86,57 @@ export default function CampaignCards({ onSelectCampaign }: Props) {
     <section className="mx-auto max-w-7xl px-8 py-24">
       <div className="mb-16 flex items-end justify-between">
         <div className="max-w-xl">
-          <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-[#00236f] md:text-5xl">
-            Urgent Campaigns
+          <h2 className={`mb-4 text-4xl font-black tracking-tighter text-[#00236f] md:text-5xl ${locale === 'en' ? 'uppercase' : ''}`}>
+            {t('donate.campaignsTitle')}
           </h2>
           <div className="h-1.5 w-24 rounded-full bg-[#fe5553]" />
         </div>
-        <p className="hidden font-medium text-slate-600 md:block">Every Rupee counts towards a better future.</p>
+        <p className="hidden font-medium text-slate-600 md:block">{t('donate.campaignsSubtitle')}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {campaigns.map((c) => (
-          <div
-            key={c.title}
-            className="group overflow-hidden rounded-2xl bg-white shadow-xl shadow-[#00236f]/5 transition-all hover:-translate-y-2"
-          >
-            <div className="relative h-48">
-              <Image
-                src={c.image}
-                alt={c.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
-              <span
-                className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold text-white backdrop-blur-md ${c.categoryBg}`}
-              >
-                {c.category}
-              </span>
-            </div>
-            <div className="p-6">
-              <h3 className="mb-4 text-xl font-extrabold leading-tight text-[#00236f]">{c.title}</h3>
-              <div className="mb-2 flex justify-between text-sm font-semibold">
-                <span className="text-slate-600">Raised: {c.raised}</span>
-                <span className="text-[#b72028]">{c.percentage}%</span>
+        {campaigns.map((c) => {
+          const title = t(`donate.${c.key}title`);
+          const category = t(`donate.${c.key}cat`);
+          return (
+            <div
+              key={c.key}
+              className="group overflow-hidden rounded-2xl bg-white shadow-xl shadow-[#00236f]/5 transition-all hover:-translate-y-2"
+            >
+              <div className="relative h-48">
+                <Image
+                  src={c.image}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+                <span
+                  className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-bold text-white backdrop-blur-md ${c.categoryBg}`}
+                >
+                  {category}
+                </span>
               </div>
-              <ProgressBar percentage={c.percentage} />
-              <button
-                type="button"
-                onClick={() => scrollToForm(c.campaign)}
-                className="w-full rounded-lg bg-[#00236f] py-3 font-bold text-white transition-colors hover:bg-[#b72028]"
-              >
-                Donate to This
-              </button>
+              <div className="p-6">
+                <h3 className="mb-4 text-xl font-extrabold leading-tight text-[#00236f]">{title}</h3>
+                <div className="mb-2 flex justify-between text-sm font-semibold">
+                  <span className="text-slate-600">
+                    {t('donate.raised')}: {c.raised}
+                  </span>
+                  <span className="text-[#b72028]">{c.percentage}%</span>
+                </div>
+                <ProgressBar percentage={c.percentage} />
+                <button
+                  type="button"
+                  onClick={() => scrollToForm(c.campaign)}
+                  className="w-full rounded-lg bg-[#00236f] py-3 font-bold text-white transition-colors hover:bg-[#b72028]"
+                >
+                  {t('donate.donateToThis')}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
