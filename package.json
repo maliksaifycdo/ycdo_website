@@ -7,10 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:frontend": "npm run dev --workspace=apps/frontend",
-    "dev:backend": "npm run start:dev --workspace=apps/backend",
-    "dev": "concurrently npm:dev:frontend npm:dev:backend",
-    "build": "npm run build --workspaces",
+    "dev:frontend": "node api.js && npm run dev --workspace=apps/frontend",
+    "dev:backend": "node api.js && npm run start:dev --workspace=apps/backend",
+    "dev": "node api.js && concurrently npm:dev:frontend npm:dev:backend",
+    "build": "node api.js && npm run build --workspaces",
     "lint": "npm run lint -w apps/frontend && npm run lint -w apps/backend"
   },
   "devDependencies": {

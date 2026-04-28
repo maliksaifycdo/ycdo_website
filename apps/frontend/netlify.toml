@@ -25,6 +25,6 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://ycdo-backend.onrender.com/api/:splat"
+  to = "https://ycdo-website.onrender.com/api/:splat"
   status = 200
   force = true

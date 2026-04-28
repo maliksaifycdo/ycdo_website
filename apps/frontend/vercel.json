@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://ycdo-backend.onrender.com/api/:path*"
+      "destination": "https://ycdo-website.onrender.com/api/:path*"
     }
   ],
   "headers": [
