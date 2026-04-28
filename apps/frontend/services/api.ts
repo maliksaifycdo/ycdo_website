@@ -1,7 +1,13 @@
 ﻿import axios from 'axios';
 
+function getApiBaseUrl() {
+  // In production we rely on platform rewrites (/api -> Render backend)
+  if (process.env.NODE_ENV === 'production') return '/api';
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:10000/api';
+}
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api',
+  baseURL: getApiBaseUrl(),
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
 });

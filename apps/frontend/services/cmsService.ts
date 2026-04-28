@@ -1,13 +1,17 @@
 import { CmsPage } from '@/types/cms.types';
 
-const DEFAULT_CMS_URL = 'http://localhost:10000/api';
+function getDefaultCmsUrl() {
+  // In production client-side, use relative API path (handled by Netlify/Vercel rewrites).
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') return '/api';
+  return 'http://localhost:10000/api';
+}
 
 // Next.js: only NEXT_PUBLIC_* is guaranteed client-exposed.
 const CMS_URL =
   process.env.NEXT_PUBLIC_CMS_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
   process.env.CMS_URL ||
-  DEFAULT_CMS_URL;
+  getDefaultCmsUrl();
 
 // Optional compatibility: set NEXT_PUBLIC_CMS_KIND=strapi to use Strapi query format.
 const CMS_KIND = (process.env.NEXT_PUBLIC_CMS_KIND || 'ycdo').toLowerCase();
